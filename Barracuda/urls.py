@@ -21,5 +21,6 @@ from GeoGuessr import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('map/', views.Maps, name="Map")
+    path('map/', views.Maps, name="Map"),
+    path('welcome/', views.Welcome, name="Welcome"),
 ]

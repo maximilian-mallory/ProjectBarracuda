@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Mode Selection</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    #gameTitle {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 18px;
+        margin: 10px;
+        cursor: pointer;
+        border: 2px solid #333;
+        background-color: #f0f0f0;
+        color: #333;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+    button:hover {
+        background-color: #333;
+        color: #fff;
+    }
+</style>
+</head>
+<body>
+    <div id="gameTitle">Project Barracuda</div>
+    <br>
+    <br>
+    <h2>Select Game Mode</h2>
+    <button id="playBtn">Play</button>
+    <button id="casualBtn">Casual</button>
+    <button id="rankedBtn">Ranked</button>
+    <button id="loginBtn">Login</button>
+
+    <script>
+        // Add event listeners to the buttons
+        document.getElementById("playBtn").addEventListener("click", function() {
+            // Handle play button click
+            alert("Play button clicked!");
+        });
+
+        document.getElementById("casualBtn").addEventListener("click", function() {
+            // Handle casual mode selection
+            alert("Casual mode selected!");
+        });
+
+        document.getElementById("rankedBtn").addEventListener("click", function() {
+            // Handle ranked mode selection
+            alert("Ranked mode selected!");
+        });
+
+        document.getElementById("loginBtn").addEventListener("click", function() {
+            // Handle login button click
+            alert("Login button clicked!");
+        });
+    </script>
+</body>
+</html>

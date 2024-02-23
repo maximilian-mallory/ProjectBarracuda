@@ -17,4 +17,6 @@ def Maps( request ):
 
     return render( request, 'mapView.html', context)
 
-    
+def Welcome(request):
+    context = {}
+    return render(request, 'welcomePage.html')    
