@@ -8,6 +8,14 @@ TODO: Guide users through getting your code up and running on their own system. 
 3.	Latest releases
 4.	API references
 
+# Rules for code changes 
+Should be finished and functional 
+Should be fractional if updating current code 
+Can be large if new feature not touching other code
+Updates will be posted in teams channel
+Notes must be clear and concise 
+
+
 # Build and Test
 TODO: Describe and show how to build your code and run the tests. 
 
