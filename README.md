@@ -8,6 +8,8 @@ TODO: Guide users through getting your code up and running on their own system. 
 3.	Latest releases
 4.	API references
 
+RYAN MADE IT INTO THE CLONED REPOSITORY
+
 # Rules for Organizing Code
 The file directories will be separated into two main directories
     Barracuda is the configuration directory with our django settings and URLs
