@@ -18,6 +18,8 @@ The api-key exists in the root directory. This will not change. No other root di
 We will use Model, View, Controller structure. These folders will be in the app level directory
 There will be no duplication of functionality or structure. 
 
+JACOB TITUS PUSHED THIS MESSAGE INTO THE REPOSITORY
+
 # Rules for code changes 
 Should be finished and functional 
 Should be fractional if updating current code 
