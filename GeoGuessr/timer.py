@@ -5,7 +5,7 @@ my_time = 300
 for x in range(my_time, 0, -1):
     seconds = x % 60
     minutes = int(x / 60) % 60
-    print(f'{minutes:02}:{seconds:02}')
+    print(f'{minutes:2}:{seconds:02}')
     time.sleep(1)
     if(x == 180):
         print('yellow')
