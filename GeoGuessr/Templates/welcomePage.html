@@ -41,20 +41,21 @@
     <button id="loginBtn">Login</button>
 
     <script>
-        // Add event listeners to the buttons
         document.getElementById("playBtn").addEventListener("click", function() {
-            // Handle play button click
-            alert("Play button clicked!");
+            //Here is the link I used to store the variables
+            //https://stackoverflow.com/questions/27765666/passing-variable-through-javascript-from-one-html-page-to-another-page
+            localStorage.setItem("isRanked",false);
+            window.location.href= 'http://localhost:8000/map/';
         });
 
         document.getElementById("casualBtn").addEventListener("click", function() {
-            // Handle casual mode selection
-            alert("Casual mode selected!");
+            localStorage.setItem("isRanked",false);
+            window.location.href= 'http://localhost:8000/map/';
         });
 
         document.getElementById("rankedBtn").addEventListener("click", function() {
-            // Handle ranked mode selection
-            alert("Ranked mode selected!");
+            localStorage.setItem("isRanked",true);
+            window.location.href= 'http://localhost:8000/map/';
         });
 
         document.getElementById("loginBtn").addEventListener("click", function() {
