@@ -38,4 +38,8 @@ def Maps( request ):
 
 def Welcome(request):
     context = {}
-    return render(request, 'welcomePage.html')    
+    return render(request, 'welcomePage.html')  
+
+def Login(request):
+    context = {}
+    return render(request, 'LoginPage.html')      
