@@ -43,6 +43,7 @@
     <script>
         document.getElementById("playBtn").addEventListener("click", function() {
             //Here is the link I used to store the variables
+            //abc123
             //https://stackoverflow.com/questions/27765666/passing-variable-through-javascript-from-one-html-page-to-another-page
             localStorage.setItem("isRanked",false);
             window.location.href= 'http://localhost:8000/map/';
@@ -59,8 +60,7 @@
         });
 
         document.getElementById("loginBtn").addEventListener("click", function() {
-            // Handle login button click
-            alert("Login button clicked!");
+            window.location.href= 'http://localhost:8000/login/';
         });
     </script>
 </body>
