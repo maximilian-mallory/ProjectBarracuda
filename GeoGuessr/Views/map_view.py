@@ -2,9 +2,6 @@ from django.shortcuts import render
 import os, random
 from django.conf import settings
 
-
-# Create your views here.
-
 def Maps( request ):
     context = {};
     file_path = os.path.join(settings.BASE_DIR, 'api-key.txt')
@@ -35,11 +32,3 @@ def Maps( request ):
     
 
     return render( request, 'mapView.html', context)
-
-def Welcome(request):
-    context = {}
-    return render(request, 'welcomePage.html')  
-
-def Login(request):
-    context = {}
-    return render(request, 'LoginPage.html')      
