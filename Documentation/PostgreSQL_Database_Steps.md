@@ -56,3 +56,61 @@
        (620, 30, true, false, '2024-03-17'),
        (400, 210, true, false, '2024-03-19'),
        (400, 120, true, true, '2024-03-20');
+
+8. Use these statements to enter in dummy data to the Player table
+
+    a. The password MD5 hashing function for PostgreSQL returns the Text data type, so run this statement first:
+       alter table Player
+       alter column password type text;
+    
+    b. Now you are safe to enter this statement:
+       insert into Player (username, password, email)
+       values
+       ('Richard', MD5('password1'), 'richard.richard.@ddcc.com'),
+       ('Max', MD5('password2'), 'max.max@ddcc.com'),
+       ('JacobT', MD5('password3'), 'jacob.t@ddcc.com'),
+       ('JacobH', MD5('password4'), 'jacob.h@ddcc.com'),
+       ('Ryan', MD5('password5'), 'ryan.ryan@ddcc.com'),
+       ('Colten', MD5('password6'), 'colten.colten@ddcc.com'),
+       ('Jagang', MD5('password7'), 'jagang.jagang@ddcc.com'),
+       ('Jennsen', MD5('password8'), 'jennsen.jennsen@ddcc.com'),
+       ('Kahlan', MD5('password9'), 'kahlan.kahlan@ddcc.com'),
+       ('Cara', MD5('password10'), 'cara.cara@ddcc.com'),
+       ('Darken', MD5('password11'), 'darken.darken@ddcc.com'),
+       ('Freddy', MD5('password12'), 'freddy.freddy@ddcc.com'),
+       ('Bonnie', MD5('password13'), 'bonnie.bonnie@ddcc.com'),
+       ('Chica', MD5('password14'), 'chica.chica@ddcc.com'),
+       ('Foxy', MD5('password15'), 'foxy.foxy@ddcc.com'),
+       ('Clank', MD5('password16'), 'clank.clank@ddcc.com');
+
+9. Now, the Game_Score table must be updated in order to access the playerID foreign key values.
+   In the statement below, the numbers on the left represent the 'gameID' column where the numbers
+   on the right represent the 'playerID' column, the 'gameID' values might differ from what you have
+   so make sure to run 'select * from Game_Score' to pick up your specific 'gameID' values and then run
+   this statement with your 'gameID' values:
+
+    a. update game_score
+       set playerID = case gameID
+       when 17 then 1
+       when 18 then 2
+       when 19 then 3
+       when 20 then 4
+       when 21 then 5
+       when 22 then 6
+       when 23 then 7
+       when 24 then 8
+       when 25 then 9
+       when 26 then 10
+       when 27 then 11
+       when 28 then 12
+       when 29 then 13
+       when 30 then 14
+       when 31 then 15
+       when 32 then 16
+       else playerID end
+       where gameID in(17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+				       31, 32);
+       
+       DISCLAMER: if you have not created the populated Game_Score table yet, just add 'playerID'
+                  to the insert statement for the Game_Score dummy data above and input the numbers
+                  on the left of the above update statement to that insert statement.
