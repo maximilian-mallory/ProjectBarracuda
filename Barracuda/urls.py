@@ -21,11 +21,12 @@ from django.urls import path
 from GeoGuessr.Views.map_view import Maps
 from GeoGuessr.Views.welcome_view import Welcome
 from GeoGuessr.Views.login_view import Login
+from GeoGuessr.Views.signin_view import Signup
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('map/', Maps, name="Map"),
     path('welcome/', Welcome, name="Welcome"),
     path('login/', Login, name="Login"),
-
+    path('signup/', Signup, name="Signup"),
 ]

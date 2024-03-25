@@ -3,15 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>Login Page</title>
-  <link rel="stylesheet" href="../static/css/LoginPage.css">
+  <link rel="stylesheet" href="../static/css/signupPage.css">
 </head>
 <body>
-  <div class="login-box">
+  <div class="signup-box">
     <h2>Login</h2>
     <form>
       <div class="username-group">
         <label for="username">Username</label>
         <input type="text" id="username" name="username" placeholder="Enter your username" required>
+      </div>
+      <br>
+      <div class="email-group">
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" placeholder="Enter your email" required>
       </div>
       <br>
       <div class="password-group">
@@ -21,18 +26,9 @@
       <br>
       <div class="button-group">
         <img src="../static/images/Cloud.png">
-        <button class="btn" type="submit">Login</button>
+        <button class="btn" type="submit">Signup</button>
       </div>
     </form>
-    <div class="button-group">
-      <img src="../static/images/Cloud.png">
-      <button id="signupBtn" class="btn">Signup</button>
-    </div>
   </div>
-  <script>
-    document.getElementById("signupBtn").addEventListener("click", function() {
-          window.location.href= 'http://localhost:8000/signup/';
-      });
-  </script>
 </body>
 </html>
