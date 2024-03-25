@@ -3,22 +3,23 @@ from django.conf import settings
 
 def AddRandomLocation( context ):
     random_locs = {
-            'new_york_city': {'lat': 40.7128, 'long': -74.0060},
-            'los_angeles': {'lat': 34.0522, 'long': -118.2437},
-            'chicago': {'lat': 41.8781, 'long': -87.6298},
-            'houston': {'lat': 29.7604, 'long': -95.3698},
-            'phoenix': {'lat': 33.4484, 'long': -112.0740},
-            'philadelphia': {'lat': 39.9526, 'long': -75.1652},
-            'san_antonio': {'lat': 29.4241, 'long': -98.4936},
-            'san_diego': {'lat': 32.7157, 'long': -117.1611},
-            'dallas': {'lat': 32.7767, 'long': -96.7970},
-            'san_jose': {'lat': 37.3382, 'long': -121.8863}
-        }
+        'new_york_city': {'lat': 40.7128, 'long': -74.0061},
+        'los_angeles': {'lat': 34.0523, 'long': -118.2436},
+        'chicago': {'lat': 41.8782, 'long': -87.6297}, 
+        'houston': {'lat': 29.7605, 'long': -95.3697} ,
+        'phoenix': {'lat': 33.4485, 'long': -112.0741},
+        'philadelphia': {'lat': 39.9527, 'long': -75.1651} ,
+        'san_antonio': {'lat': 29.4242, 'long': -98.4935},
+        'san_diego': {'lat': 32.7158, 'long': -117.1610}, 
+        'dallas': {'lat': 32.7766, 'long': -96.7969} ,
+        'san_jose': {'lat': 37.3383, 'long': -121.8862} ,
+    }
 
     random_city = random.choice(list(random_locs.keys()))
 
     context['lat_con'] = random_locs[random_city]['lat']
     context['long_con'] = random_locs[random_city]['long']
+    context['city_name'] = random_city
 
 def GetAPIKey():
 

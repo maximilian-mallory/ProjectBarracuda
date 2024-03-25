@@ -6,8 +6,32 @@
 
     <link rel="stylesheet" type="text/css" href="../static/css/map.css">
 
-    <script type="module">
-      function initialize() {
+    <script>
+
+      var numGuesses = 0;
+
+      function checkGuess() 
+      {
+        let currentLocation = "{{city_name}}";
+
+        var guess = window.prompt("{{city_name}}");
+        
+        console.log(currentLocation);
+
+        if( guess.toLowerCase() == currentLocation )
+        {
+          alert("Correct");
+        }
+        else
+        {
+          alert("Wrong");
+        }
+        numGuesses++;
+        console.log(numGuesses);
+      }
+
+      function initialize() 
+      {
         var latitude = parseFloat("{{lat_con}}");
         var longitude = parseFloat("{{long_con}}");
         const fenway = { lat: latitude, lng: longitude };
@@ -37,8 +61,14 @@
     </script>
   </head>
   <body>
-    <div id="map"></div>
     <div id="pano"></div>
+    <div id="floating-panel">
+      <input
+        type="button" 
+        value="{{city_name}}"
+        onclick="checkGuess();"
+      />
+    </div>
 
     <!-- 
       The `defer` attribute causes the callback to execute after the full HTML
