@@ -3,11 +3,11 @@ import os, random
 from django.conf import settings
 from GeoGuessr.Controllers.map_controller import *
 
-def Maps( request ):
+def GamePage( request ):
     context = {};
     
     context['key'] = GetAPIKey
 
     AddRandomLocation( context )
 
-    return render( request, 'mapView.html', context)
+    return render( request, 'GamePage.html', context)

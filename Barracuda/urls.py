@@ -18,14 +18,14 @@ from django.contrib import admin
 from django.urls import path
 
 #to import views, ' from GeoGuessr.Views.some_view import function '
-from GeoGuessr.Views.map_view import Maps
+from GeoGuessr.Views.gamepage_view import GamePage
 from GeoGuessr.Views.welcome_view import Welcome
 from GeoGuessr.Views.login_view import Login
 from GeoGuessr.Views.signin_view import Signup
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('map/', Maps, name="Map"),
+    path('gamepage/', GamePage, name="GamePage"),
     path('welcome/', Welcome, name="Welcome"),
     path('login/', Login, name="Login"),
     path('signup/', Signup, name="Signup"),

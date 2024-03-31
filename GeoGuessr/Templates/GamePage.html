@@ -5,6 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Super Long Name Game</title>
     <link rel="stylesheet" href="../static/css/GamePage.css">
+    <script>
+
+        var numGuesses = 0;
+  
+        function checkGuess() 
+        {
+          let currentLocation = "{{city_name}}";
+  
+          var guess = window.prompt("{{city_name}}");
+          
+          console.log(currentLocation);
+  
+          if( guess.toLowerCase() == currentLocation )
+          {
+            alert("Correct");
+          }
+          else
+          {
+            alert("Wrong");
+          }
+          numGuesses++;
+          console.log(numGuesses);
+        }
+  
+        function initialize ()
+        {
+          var latitude = parseFloat("{{lat_con}}");
+          var longitude = parseFloat("{{long_con}}");
+          const fenway = { lat: latitude, lng: longitude };
+         
+          const panorama = new google.maps.StreetViewPanorama(
+            document.getElementById("pano"),
+            {
+              position: fenway,
+              pov: {
+                heading: 34,
+                pitch: 10,
+              },
+            
+  
+              linksControl: true,
+              panControl: false,
+              enableCloseButton: false,
+              addressControl: false,
+              showRoadLabels: false,
+            },
+          );
+  
+          map.setStreetView(panorama);
+        }
+  
+        window.initialize = initialize;
+      </script>
 </head>
 <body>
 
@@ -28,19 +81,7 @@
             <li>Hint</li>
         </ul>
     </div>
-    <div class="main-content">
-        <p>Hello and welcome to Super Long Name Game! This is where the main game display will be.</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-    </div>
+    <div id="pano"></div>
     <div class="side-box">
         <h2>Leaderboard</h2>
         <ul>
@@ -53,6 +94,8 @@
             <li>Player</li>
             <li>Player</li>
         </ul>
+        <button onclick="initialize()">New Game (Reload Map)</button>
+        <!-- I will be adding AJAX funcitonality to the above button to load a new game asynchronously-->
     </div>
 </div>
 
@@ -69,6 +112,11 @@
         <p>Globe image</p>
     </div>
 </div>
-
+<script
+      src="https://maps.googleapis.com/maps/api/js?key={{ key }}&callback=initialize&v=weekly"
+      async
+    >
+</script>
 </body>
+
 </html>
