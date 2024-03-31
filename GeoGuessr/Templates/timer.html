@@ -32,14 +32,14 @@ function startTimer(duration, display) {
         if (--timer < 0) {
             clearInterval(interval);
             display.textContent = "Time's up!";
-        } else if (timer < 180 && timer >= 60) {
+        } else if (timer < 20 && timer >=10) {
             display.style.color = "yellow";
-        } else if (timer < 60 && timer >= 30) {
-            display.style.color = "red";
-        } else if (timer < 30 && timer % 2 == 1) {
+        } else if (timer >= 20) {
+            display.style.color = "green";
+        } else if (timer < 10 && timer % 2 == 1) {
             display.style.color = "red";
             display.style.backgroundColor = "black";
-        } else if (timer < 30 && timer % 2 == 0) {
+        } else if (timer < 10 && timer % 2 == 0) {
             display.style.color = "red";
             display.style.backgroundColor = "white";
         }
