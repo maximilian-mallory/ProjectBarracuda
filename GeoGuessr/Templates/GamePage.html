@@ -108,8 +108,7 @@
 </div>
 
 <div id="container">
-    <div class="side-box bottom">
-        <p>Timer goes here</p>
+    <div id="timerDiv" class="side-box bottom">
     </div>
     <div class="main-content bottom-content">
         <h2>Quotes to keep you going!</h2>
@@ -124,6 +123,45 @@
       src="https://maps.googleapis.com/maps/api/js?key={{ key }}&callback=initialize&v=weekly"
       async
     >
+</script>
+<script>
+  function startTimer(duration, display) {
+            var timer = duration, minutes, seconds;
+            var interval = setInterval(function () {
+
+                //figures out how many minutes and seconds there are based on the duration variable
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+                
+                // adds padding
+                //minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                //display content
+                display.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    clearInterval(interval);
+                    display.textContent = "Time's up!";
+                } else if (timer < 180 && timer >= 60) {
+                    display.style.color = "yellow";
+                } else if (timer < 60 && timer >= 30) {
+                    display.style.color = "red";
+                } else if (timer < 30 && timer % 2 == 1) {
+                    display.style.color = "red";
+                    display.style.backgroundColor = "black";
+                } else if (timer < 30 && timer % 2 == 0) {
+                    display.style.color = "red";
+                    display.style.backgroundColor = "white";
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            var fiveMinutes = 35,
+                display = document.querySelector('#timerDiv');
+            startTimer(fiveMinutes, display);
+        };
 </script>
 </body>
 
