@@ -3,16 +3,16 @@ from django.conf import settings
 
 def AddRandomLocation( context ):
     random_locs = {
-        'new_york_city': {'lat': 40.7128, 'long': -74.0061},
-        'los_angeles': {'lat': 34.0523, 'long': -118.2436},
+        'newn york city': {'lat': 40.7128, 'long': -74.0061},
+        'los angeles': {'lat': 34.0523, 'long': -118.2436},
         'chicago': {'lat': 41.8782, 'long': -87.6297}, 
         'houston': {'lat': 29.7605, 'long': -95.3697} ,
         'phoenix': {'lat': 33.4485, 'long': -112.0741},
         'philadelphia': {'lat': 39.9527, 'long': -75.1651} ,
-        'san_antonio': {'lat': 29.4242, 'long': -98.4935},
-        'san_diego': {'lat': 32.7158, 'long': -117.1610}, 
+        'san antonio': {'lat': 29.4242, 'long': -98.4935},
+        'san diego': {'lat': 32.7158, 'long': -117.1610}, 
         'dallas': {'lat': 32.7766, 'long': -96.7969} ,
-        'san_jose': {'lat': 37.3383, 'long': -121.8862} ,
+        'san jose': {'lat': 37.3383, 'long': -121.8862} ,
     }
 
     random_city = random.choice(list(random_locs.keys()))

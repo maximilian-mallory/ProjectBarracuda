@@ -22,6 +22,7 @@ from GeoGuessr.Views.gamepage_view import GamePage
 from GeoGuessr.Views.welcome_view import Welcome
 from GeoGuessr.Views.login_view import Login
 from GeoGuessr.Views.signin_view import Signup
+from GeoGuessr.Views.save_score import SaveScore
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,4 +30,5 @@ urlpatterns = [
     path('welcome/', Welcome, name="Welcome"),
     path('login/', Login, name="Login"),
     path('signup/', Signup, name="Signup"),
+    path('save_score/', SaveScore, name='SaveScore')
 ]
