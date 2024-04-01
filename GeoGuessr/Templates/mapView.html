@@ -4,13 +4,71 @@
     <title>Street View split-map-panes</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel="stylesheet" type="text/css" href="../static/css/map.css">
 
-    <script type="module" src="{% static 'index.js' %}"></script>
+    <script>
+
+      var numGuesses = 0;
+
+      function checkGuess() 
+      {
+        let currentLocation = "{{city_name}}";
+
+        var guess = window.prompt("{{city_name}}");
+        
+        console.log(currentLocation);
+
+        if( guess.toLowerCase() == currentLocation )
+        {
+          alert("Correct");
+        }
+        else
+        {
+          alert("Wrong");
+        }
+        numGuesses++;
+        console.log(numGuesses);
+      }
+
+      function initialize() 
+      {
+        var latitude = parseFloat("{{lat_con}}");
+        var longitude = parseFloat("{{long_con}}");
+        const fenway = { lat: latitude, lng: longitude };
+       
+        const panorama = new google.maps.StreetViewPanorama(
+          document.getElementById("pano"),
+          {
+            position: fenway,
+            pov: {
+              heading: 34,
+              pitch: 10,
+            },
+          
+
+            linksControl: true,
+            panControl: false,
+            enableCloseButton: false,
+            addressControl: false,
+            showRoadLabels: false,
+          },
+        );
+
+        map.setStreetView(panorama);
+      }
+
+      window.initialize = initialize;
+    </script>
   </head>
   <body>
-    <div id="map"></div>
     <div id="pano"></div>
+    <div id="floating-panel">
+      <input
+        type="button" 
+        value="{{city_name}}"
+        onclick="checkGuess();"
+      />
+    </div>
 
     <!-- 
       The `defer` attribute causes the callback to execute after the full HTML

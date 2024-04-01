@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">>
+  <meta charset="UTF-8">
   <title>Login Page</title>
-  <link rel="stylesheet" href="LoginPage.css">
+  <link rel="stylesheet" href="../static/css/LoginPage.css">
 </head>
 <body>
   <div class="login-box">
@@ -13,12 +13,26 @@
         <label for="username">Username</label>
         <input type="text" id="username" name="username" placeholder="Enter your username" required>
       </div>
+      <br>
       <div class="password-group">
         <label for="password">Password</label>
         <input type="password" id="password" name="password" placeholder="Enter your password" required>
       </div>
-      <button type="submit">Login</button>
+      <br>
+      <div class="button-group">
+        <img src="../static/images/Cloud.png">
+        <button class="btn" type="submit">Login</button>
+      </div>
     </form>
+    <div class="button-group">
+      <img src="../static/images/Cloud.png">
+      <button id="signupBtn" class="btn">Signup</button>
+    </div>
   </div>
+  <script>
+    document.getElementById("signupBtn").addEventListener("click", function() {
+          window.location.href= 'http://localhost:8000/signup/';
+      });
+  </script>
 </body>
 </html>

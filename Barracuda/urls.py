@@ -17,10 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from GeoGuessr import views
+#to import views, ' from GeoGuessr.Views.some_view import function '
+from GeoGuessr.Views.gamepage_view import GamePage
+from GeoGuessr.Views.welcome_view import Welcome
+from GeoGuessr.Views.login_view import Login
+from GeoGuessr.Views.signin_view import Signup
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('map/', views.Maps, name="Map"),
-    path('welcome/', views.Welcome, name="Welcome"),
+    path('gamepage/', GamePage, name="GamePage"),
+    path('welcome/', Welcome, name="Welcome"),
+    path('login/', Login, name="Login"),
+    path('signup/', Signup, name="Signup"),
 ]

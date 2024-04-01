@@ -29,6 +29,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+GDAL_LIBRARY_PATH = 'C:/OSGeo4W/bin/gdal308'
+
+GEOS_LIBRARY_PATH = 'C:/OSGeo4W/bin/geos_c.dll'
+
 
 # Application definition
 
@@ -39,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'GeoGuessr'
+    'django.contrib.gis',
+    'GeoGuessr',
 ]
 
 MIDDLEWARE = [
@@ -78,8 +83,14 @@ WSGI_APPLICATION = 'Barracuda.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'GeoGuessr',
+        'USER': 'postgres',
+        'PASSWORD': 'PB@rracuda1',
+        'HOST': 'localhost',
+        'PORT': '5432',
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
