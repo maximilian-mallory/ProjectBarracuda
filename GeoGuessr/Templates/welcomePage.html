@@ -1,38 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Game Mode Selection</title>
-<link rel="stylesheet" type="text/css" href="../static/css/welcomePage.css">
+    <meta charset="UTF-8">
+    <title>Game Mode Selection</title>
+    <link rel="stylesheet" href="../static/css/welcomePage.css">
 </head>
 <body>
-    <div id="gameTitle">Project Barracuda</div>
+    <div id="gameTitle">
+        <h4>The Legend of Culture:</h4>
+        <h4>Barracuda Quest the Game 2 Electric Boogaloo</h4>
+        <h4>Definitive Edition Remastered 2</h4>
+    </div>
     <br>
+    <h4>Welcome to the Game</h4>
+    <div class="button-group">
+        <img src="../static/images/Cloud.png">
+        <button id="casualBtn" class="btn">Casual</button>
+    </div>
+    <div class="button-group">
+        <img src="../static/images/Cloud.png">
+        <button id="rankedBtn" class="btn">Ranked</button>
+    </div>
     <br>
-    <h2>Select Game Mode</h2>
-    <button id="playBtn">Play</button>
-    <button id="casualBtn">Casual</button>
-    <button id="rankedBtn">Ranked</button>
-    <button id="loginBtn">Login</button>
+    <div class="button-group">
+        <img src="../static/images/Cloud.png">
+        <button id="leaderBtn" class="btn">Leaderboard</button>
+    </div>
+    <div class="button-group">
+        <img src="../static/images/Cloud.png">
+        <button id="loginBtn" class="btn">Login</button>
+    </div>
 
     <script>
-        document.getElementById("playBtn").addEventListener("click", function() {
+        document.getElementById("leaderBtn").addEventListener("click", function() {
             //Here is the link I used to store the variables
             //abc123
             //https://stackoverflow.com/questions/27765666/passing-variable-through-javascript-from-one-html-page-to-another-page
-            localStorage.setItem("isRanked",false);
-            window.location.href= 'http://localhost:8000/map/';
         });
 
         document.getElementById("casualBtn").addEventListener("click", function() {
             localStorage.setItem("isRanked",false);
-            window.location.href= 'http://localhost:8000/map/';
+            window.location.href= 'http://localhost:8000/gamepage/';
         });
 
         document.getElementById("rankedBtn").addEventListener("click", function() {
             localStorage.setItem("isRanked",true);
-            window.location.href= 'http://localhost:8000/map/';
+            window.location.href= 'http://localhost:8000/gamepage/';
         });
 
         document.getElementById("loginBtn").addEventListener("click", function() {
