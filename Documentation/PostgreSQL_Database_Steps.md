@@ -114,3 +114,18 @@
        DISCLAMER: if you have not created the populated Game_Score table yet, just add 'playerID'
                   to the insert statement for the Game_Score dummy data above and input the numbers
                   on the left of the above update statement to that insert statement.
+
+10. The 'settings.py' file holds the database connection fields, but you still need the
+    psycopg2 package: run 'pip install psycopg2' in the terminal (cmd) to get this package
+
+    a. once psycopg2 is installed, make sure that your PostgreSQL 'postres' user password
+       matches everyone else's: run "alter user postgres with password 'PB@rracuda1';"
+
+11. Importing the GIS models and junk into a database (PostgreSQL) is a pain, but   
+    thankfully it seems to only be a pain for me, I believe all you have to do is:
+
+    a. Use the OSGeo4W network installer (https://trac.osgeo.org/osgeo4w/wiki) to install
+       GDAL (and only GDAL), make sure this installs in the C: drive
+    
+    b. from wherever you have GeoGuessr installed, run this in a cmd window:
+        'python manage.py migrate' to test the database connection

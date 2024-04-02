@@ -24,6 +24,15 @@
         <button class="btn" type="submit">Login</button>
       </div>
     </form>
+    <div class="button-group">
+      <img src="../static/images/Cloud.png">
+      <button id="signupBtn" class="btn">Signup</button>
+    </div>
   </div>
+  <script>
+    document.getElementById("signupBtn").addEventListener("click", function() {
+          window.location.href= 'http://localhost:8000/signup/';
+      });
+  </script>
 </body>
 </html>
