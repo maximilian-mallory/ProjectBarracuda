@@ -160,3 +160,12 @@
     
     b. after the command finishes importing the GIS information, go to pgAdmin 4 and 
        run: select * from "GeoGuessr_worldborder"; and there should be a whole bunch of entries that were loaded into the table.
+
+14. In order to update the current player entries to use the new password hash 
+    function that has been researched and aquired, one must PAINSTAKINGLY enter
+    the next SQL statement 16 seperate times, one time for each entry remembering 
+    to change the playerID number and the number at the end of the password:
+
+    a. update player
+       set password = SHA512('password1')
+       where playerID = 1;

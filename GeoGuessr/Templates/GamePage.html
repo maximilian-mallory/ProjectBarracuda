@@ -113,17 +113,17 @@
     </div>
     <div id="pano"></div>
     <div class="side-box">
-        <h2>Leaderboard</h2>
-        <ul>
-            <li>Player</li>
-            <li>Player</li>
-            <li>Player</li>
-            <li>Player</li>
-            <li>Player</li>
-            <li>Player</li>
-            <li>Player</li>
-            <li>Player</li>
-        </ul>
+      <table class="scoreboard">
+        <thead>
+          <tr>
+            <th>Position</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody id="scoreboardBody">
+          <!-- Table body will be populated dynamically -->
+        </tbody>
+      </table>
         <button onclick="initialize()">New Game (Reload Map)</button>
         <!-- I will be adding AJAX funcitonality to the above button to load a new game asynchronously-->
         
@@ -193,10 +193,30 @@
         }
 
         window.onload = function () {
-            var fiveMinutes = 35,
+            var fiveMinutes = 300,
                 display = document.querySelector('#timerDiv');
             interval = startTimer(fiveMinutes, display);
         };
+        const scores = [100, 90, 80, 70, 60, 50, 40, 30, 20, 10];
+
+  // Function to populate the scoreboard
+  function populateScoreboard() {
+    const tbody = document.getElementById('scoreboardBody');
+    tbody.innerHTML = ''; // Clear previous entries
+    scores.forEach((score, index) => {
+      const row = document.createElement('tr');
+      const positionCell = document.createElement('td');
+      positionCell.textContent = index + 1;
+      const scoreCell = document.createElement('td');
+      scoreCell.textContent = score;
+      row.appendChild(positionCell);
+      row.appendChild(scoreCell);
+      tbody.appendChild(row);
+    });
+  }
+
+  // Call the function to initially populate the scoreboard
+  populateScoreboard();
 </script>
 </body>
 
