@@ -24,33 +24,32 @@
           {
             clearInterval(interval);
             
-            var xhr = new XMLHttpRequest;
-            xhr.open('POST', '/save_score/', true);
+            var data = {
+            timeLeft: remainingTime.toString(),
+            numGuesses: numGuesses.toString()
+            };
 
-            xhr.setRequestHeader('Content-Type', 'application/json');
-
-            xhr.onload = function() 
-            {
-              if( xhr.status == 200 )
-              {
-                console.log( xhr.responseText );
-              }
-              else 
-              {
-                console.error('Error saving guess: ' + xhr.statusText);
-              }
-
-            }
-            console.log(remainingTime);
-            console.log(numGuesses)
-            var formData = new FormData();
-            formData.append('timeLeft', string(remainingTime));
-            formData.append('numGuesses', string(numGuesses));
-            console.log(formData);
-            xhr.send(formData);
-
-            alert("Correct");
-            //stop timer
+            fetch('/save_score/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error saving guess');
+                }
+                return response.text();
+            })
+            .then(data => {
+                console.log(JSON.stringify(data));
+                alert("Correct");
+            })
+            .catch(error => {
+                console.error('Error saving guess:', error);
+                alert("Error saving guess");
+            });
           }
           else
           {
