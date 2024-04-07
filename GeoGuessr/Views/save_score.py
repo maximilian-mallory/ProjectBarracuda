@@ -17,11 +17,23 @@ def SaveScore(request):
                 raise ValueError("Invalid data received")
 
             player_id = 1
-            score = 1000 - abs(int(time_left) - 35) - (50 * int(num_guesses))
+            score = 1000 - abs(int(time_left) - 35) - (50 * ( int(num_guesses) - 1 ))
             current_time_utc = datetime.datetime.now()
             current_time_utc = timezone.now()
 
-            print(score, current_time_utc, player_id)
+            game_score = Game_Score.objects.create(
+                score=score,
+                finalTime=int(time_left),
+                usedHintOne=False,
+                usedHintTwo=False,
+                datePlayed=timezone.now(),
+                playerID=1  # Assuming playerID is always 1
+            )
+
+            # Save the record
+            game_score.save()
+            print('score saved')
+            print(current_time_utc)
             return JsonResponse({'message': 'Game score saved successfully'})
         except Exception as e:
             return JsonResponse({'error': str(e)}, status=500)
