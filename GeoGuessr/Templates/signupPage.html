@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <title>Login Page</title>
   <link rel="stylesheet" href="../static/css/signupPage.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </head>
 <body>
   <div class="signup-box">
     <h2>Login</h2>
     <form>
+      {% csrf_token %}
       <div class="username-group">
         <label for="username">Username</label>
         <input type="text" id="username" name="username" placeholder="Enter your username" required>
@@ -26,9 +28,46 @@
       <br>
       <div class="button-group">
         <img src="../static/images/Cloud.png">
-        <button class="btn" type="submit">Signup</button>
+        <button class="btn" name="submit" type="submit">Signup</button>
       </div>
     </form>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('form');
+
+        form.addEventListener('submit', function(event) {
+          event.preventDefault();
+
+          const username = document.querySelector('#username').value.trim();
+          const email = document.querySelector('#email').value.trim();
+          const password = CryptoJS.SHA1(document.querySelector('#password').value.trim()).toString();
+
+          const data = {
+            username: username,
+            email: email,
+            password: password
+          };
+          console.log(data);
+
+          fetch('/sign-up-verify/', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+          })
+          .then(response => response.json())
+          .then(result => {
+            console.log(result);
+            // Handle success or error response
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+        });
+    });
+  </script>
 </body>
 </html>

@@ -21,7 +21,7 @@ from django.urls import path
 from GeoGuessr.Views.gamepage_view import GamePage
 from GeoGuessr.Views.welcome_view import Welcome
 from GeoGuessr.Views.login_view import Login
-from GeoGuessr.Views.signin_view import Signup
+from GeoGuessr.Views.signin_view import Signup, SignUpVerify
 from GeoGuessr.Views.save_score import SaveScore
 
 urlpatterns = [
@@ -30,5 +30,6 @@ urlpatterns = [
     path('welcome/', Welcome, name="Welcome"),
     path('login/', Login, name="Login"),
     path('signup/', Signup, name="Signup"),
-    path('save_score/', SaveScore, name='SaveScore')
+    path('save_score/', SaveScore, name='SaveScore'),
+    path('sign-up-verify/', SignUpVerify, name='SignUpVerify')
 ]
