@@ -2,7 +2,8 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    background-image: url("../images/Background.png");
+    text-align: center;
 }
 
 .main-title {
@@ -18,8 +19,9 @@ body {
     max-width: 1400px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: transparent;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
 .side-box {
@@ -27,12 +29,15 @@ body {
     background-color: #f9f9f9;
     padding: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin: 20px auto;
 }
 
 .main-content {
     flex: 1 1 80%;
     padding: 5px;
     text-align: center;
+    margin: auto;
 }
 
 .bottom-content {
@@ -64,4 +69,40 @@ body {
     font-family: "Roboto", "sans-serif";
     line-height: 30px;
     padding-left: 10px;
+  }
+
+  .button-group {
+    position: relative;
+    width: 50%;
+    margin: auto;
+  }
+  
+  .button-group img {
+    width: 30%;
+    height: auto;
+  }
+  
+  .button-group .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: transparent;
+    color: black;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .side-box.bottom img{
+    width: 50%;
+    height: auto;
+  }
+
+  .main-content.bottom-content {
+    background-color: #f9f9f9;
+    height: 115px;
   }
