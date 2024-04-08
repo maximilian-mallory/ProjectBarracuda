@@ -23,6 +23,8 @@ from GeoGuessr.Views.welcome_view import Welcome
 from GeoGuessr.Views.login_view import Login, LoginVerify
 from GeoGuessr.Views.signin_view import Signup, SignUpVerify
 from GeoGuessr.Views.save_score import SaveScore
+from GeoGuessr.Views.leaderboard_view import Leaderboard
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,8 +32,10 @@ urlpatterns = [
     path('welcome/', Welcome, name="Welcome"),
     path('login/', Login, name="Login"),
     path('signup/', Signup, name="Signup"),
+    path('leaderboard/', Leaderboard, name="Leaderboard"),
     path('save_score/', SaveScore, name='SaveScore'),
     path('sign-up-verify/', SignUpVerify, name='SignUpVerify'),
     path('login-verify/', LoginVerify, name='LoginVerify')
+    
 
 ]
