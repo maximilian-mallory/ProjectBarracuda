@@ -93,7 +93,7 @@
 
 <div id="container">
     <div id="title" class="main-title">
-        <h1>Super Long Name Game</h1>
+        <h1>The Legend of Culture: Barracuda Quest the Game 2 Electric Boogaloo Definitive Edition Remastered 2</h1>
     </div>
 </div>
 
@@ -124,18 +124,23 @@
           <!-- Table body will be populated dynamically -->
         </tbody>
       </table>
-        <button onclick="initialize()">New Game (Reload Map)</button>
+        </div>
+</div>
+<div class="button-group">
+  <img src="../static/images/Cloud.png">
+  <button class="btn" onclick="initialize()">New Game (Reload Map)</button>
+</div>
         <!-- I will be adding AJAX funcitonality to the above button to load a new game asynchronously-->
         
           <input
+            class="button"
             type="button" 
             value="{{city_name}}"
             onclick="checkGuess();"
           />
        
         <!-- this is the button for guessing. I can look into getting a better popup window, or we can have a permanent textbox within the game page-->
-    </div>
-</div>
+    
 
 <div id="container">
     <div id="timerDiv" class="side-box bottom">
@@ -146,7 +151,7 @@
         <p>"You're parents divorce wasn't your fault!</p>
     </div>
     <div class="side-box bottom">
-        <p>Globe image</p>
+      <img src="../static/images/Globe.jpg">
     </div>
 </div>
 <script
