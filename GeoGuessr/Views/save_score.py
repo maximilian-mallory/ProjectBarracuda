@@ -27,10 +27,9 @@ def SaveScore(request):
                 usedHintOne=False,
                 usedHintTwo=False,
                 datePlayed=timezone.now(),
-                playerID=1  # Assuming playerID is always 1
+                playerID=1
             )
 
-            # Save the record
             game_score.save()
             print('score saved')
             print(current_time_utc)
