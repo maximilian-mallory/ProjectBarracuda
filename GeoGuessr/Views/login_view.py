@@ -16,8 +16,11 @@ def Login(request):
 def LoginVerify(request):
     if request.method == 'POST':
         try:
-            username = request.POST.get('username')
-            password = request.POST.get('password')
+
+            data = json.loads(request.body)
+
+            username = data.get('username')
+            password = data.get('password')
             print(username)
 
             try:
@@ -26,10 +29,7 @@ def LoginVerify(request):
 
                 return JsonResponse({'message': 'User does not exist'})
 
-            hashed_password = hashlib.sha1(password.encode()).hexdigest()
-            print(hashed_password)
-
-            if user.password == hashed_password:
+            if user.password == password:
 
                 return JsonResponse({'message': 'Login successful'})
             else:

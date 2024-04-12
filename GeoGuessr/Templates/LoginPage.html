@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Login Page</title>
   <link rel="stylesheet" href="../static/css/LoginPage.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </head>
 <body>
   <div class="login-box">
@@ -38,26 +39,37 @@
 
   <script>
     
-    const form= document.querySelector('#login-form');
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('form');
 
-    form.addEventListener('submit', (e)=> {
+        form.addEventListener('submit', function(event) {
+          event.preventDefault();
 
-      e.preventDefault();
+          const username = document.querySelector('#username').value.trim();
+          const password = CryptoJS.SHA1(document.querySelector('#password').value.trim()).toString();
 
-      const formData = new FormData(form);
-      
-      fetch('/login-verify/', {
+          const data = {
+            username: username,
+            password: password
+          };
+          console.log(data);
+
+          fetch('/login-verify/', {
             method: 'POST',
-            body: formData
-          })
-          .then(response => response.json())
-          .then(result => {
-            console.log(result);
-          })
-          .catch(error => {
-            console.error('Error:', error);
-          });
-    })
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+              console.log(result);
+            })
+            .catch(error => {
+              console.error('Error:', error);
+            });
+        });
+    });
 
   </script>
 </html>
