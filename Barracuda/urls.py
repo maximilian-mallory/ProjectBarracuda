@@ -21,7 +21,7 @@ from django.urls import path
 from GeoGuessr.Views.gamepage_view import GamePage
 from GeoGuessr.Views.welcome_view import Welcome
 from GeoGuessr.Views.login_view import Login, LoginVerify
-from GeoGuessr.Views.signin_view import Signup, SignUpVerify
+from GeoGuessr.Views.signup_view import Signup, SignUpVerify
 from GeoGuessr.Views.save_score import SaveScore
 from GeoGuessr.Views.leaderboard_view import Leaderboard
 
