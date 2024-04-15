@@ -29,9 +29,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-#GDAL_LIBRARY_PATH = 'C:/OSGeo4W/bin/gdal308'
+GDAL_LIBRARY_PATH = 'C:/OSGeo4W/bin/gdal308'
 
-#GEOS_LIBRARY_PATH = 'C:/OSGeo4W/bin/geos_c.dll'
+GEOS_LIBRARY_PATH = 'C:/OSGeo4W/bin/geos_c.dll'
 
 
 # Application definition
@@ -78,34 +78,21 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Barracuda.wsgi.application'
 
 
- #Database
- #https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+# Database
+# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'GeoGuessr',
-       'USER': 'postgres',
+        'USER': 'postgres',
         'PASSWORD': 'PB@rracuda1',
         'HOST': 'localhost',
         'PORT': '5432',
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'GeoGuessr',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
-
-# Connect to MySQL database
-
 
 
 # Password validation
