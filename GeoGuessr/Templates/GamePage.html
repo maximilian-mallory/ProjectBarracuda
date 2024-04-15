@@ -15,8 +15,8 @@
           numGuesses++;
 
           let currentLocation = "{{city_name}}";
-          var guessBox = document.getElementById("guessBox");
-          var guess = document.getElementById("guessBox").value;
+  
+          var guess = window.prompt("{{city_name}}");
           
           console.log(currentLocation);
   
@@ -53,14 +53,7 @@
           }
           else
           {
-            guessBox.style.backgroundColor = "red";
-            guessBox.style.color = "black";
-            guessBox.value = "Wrong";
-            setTimeout(function() {
-              guessBox.style.backgroundColor = "";
-              guessBox.style.color = "";
-              guessBox.value = "";
-            }, 5000);
+            alert("Wrong");
           }
           
           console.log(numGuesses);
@@ -138,16 +131,14 @@
   <button class="btn" onclick="initialize()">New Game (Reload Map)</button>
 </div>
         <!-- I will be adding AJAX funcitonality to the above button to load a new game asynchronously-->
-        <div>
-          <input id="guessBox"></input>
+        
           <input
             class="button"
             type="button" 
             value="{{city_name}}"
             onclick="checkGuess();"
           />
-          
-        </div>
+       
         <!-- this is the button for guessing. I can look into getting a better popup window, or we can have a permanent textbox within the game page-->
     
 

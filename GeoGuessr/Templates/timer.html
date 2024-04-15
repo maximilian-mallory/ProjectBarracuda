@@ -11,81 +11,46 @@
 </style>
 </head>
 <body>
-    <button onClick="stopTimer()">Stop</button>
-    <button onClick="getTime()">Stop</button>
-    <p id="test"></p>
 <div id="timer"></div>
 
 <script>
-var timer;
-var startTime;
-var elapsedTime = 0;
-
 function startTimer(duration, display) {
-    var timerValue = duration, minutes, seconds;
+    var timer = duration, minutes, seconds;
+    var interval = setInterval(function () {
 
-    function pad(val) {
-        return val < 10 ? "0" + val : val;
-    }
+        //figures out how many minutes and seconds there are based on the duration variable
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+        
+        // adds padding
+        //minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
 
-    function updateDisplay() {
-        minutes = parseInt(timerValue / 60, 10);
-        seconds = parseInt(timerValue % 60, 10);
-        display.textContent = pad(minutes) + ":" + pad(seconds);
-    }
+        //display content
+        display.textContent = minutes + ":" + seconds;
 
-    function updateTime() {
-        updateDisplay();
-
-        if (--timerValue < 0) {
-            clearInterval(timer);
+        if (--timer < 0) {
+            clearInterval(interval);
             display.textContent = "Time's up!";
-        } else if (timerValue <= 180) {
+        } else if (timer < 20 && timer >=10) {
             display.style.color = "yellow";
-        } else if (timerValue <= 120) {
+        } else if (timer >= 20) {
             display.style.color = "green";
-        } else if (timerValue < 30 && timerValue % 2 == 1) {
+        } else if (timer < 10 && timer % 2 == 1) {
             display.style.color = "red";
             display.style.backgroundColor = "black";
-        } else if (timerValue < 30 && timerValue % 2 == 0) {
+        } else if (timer < 10 && timer % 2 == 0) {
             display.style.color = "red";
             display.style.backgroundColor = "white";
         }
-    }
-
-    updateTime();
-
-    timer = setInterval(updateTime, 1000);
+    }, 1000);
 }
-
-function stopTimer() {
-    clearInterval(timer);
-    elapsedTime = 300 - document.querySelector('#timer').textContent.split(":")[0] * 60 - document.querySelector('#timer').textContent.split(":")[1] * 1;
-    var display = document.querySelector('#timer');
-    display.textContent = "Stopped after " + getTime() + " seconds";
-    var stopButton = document.querySelector('button');
-    stopButton.textContent = "Restart";
-    stopButton.onclick = function() {
-        stopButton.textContent = "Stop";
-        stopButton.onclick = stopTimer;
-        var fiveMinutes = 300;
-        var display = document.querySelector('#timer');
-        startTimer(fiveMinutes, display);
-    };
-}
-function getTime() {
-    return elapsedTime;
-}
-
+//test scenario
 window.onload = function () {
-    var fiveMinutes = 300,
+    var fiveMinutes = 35,
         display = document.querySelector('#timer');
     startTimer(fiveMinutes, display);
 };
-
-function pad(val) {
-    return val < 10 ? "0" + val : val;
-}
 </script>
 </body>
 </html>
