@@ -1,12 +1,14 @@
 import hashlib
 import json
-from django.http import JsonResponse
-from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.shortcuts import redirect, render
 import os, random
 from django.conf import settings
+from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
-
+from django.contrib.auth import authenticate, login
 from GeoGuessr.Models.user import User
+from GeoGuessr.Controllers.UserBackend import UserBackend
 
 def Login(request):
     context = {}
@@ -21,19 +23,15 @@ def LoginVerify(request):
 
             username = data.get('username')
             password = data.get('password')
-            print(username)
 
-            try:
-                user = User.objects.get(username=username)
-            except User.DoesNotExist:
+            user = UserBackend.UserAuthenticate(username=username, password=password)
 
-                return JsonResponse({'message': 'User does not exist'})
-
-            if user.password == password:
-
-                return JsonResponse({'message': 'Login successful'})
+            if user is not None:
+                login(request, user)
+                print(username)
+                return HttpResponseRedirect('/welcome/')
+            
             else:
-
                 return JsonResponse({'message': 'Incorrect password'})
 
         except Exception as e:
