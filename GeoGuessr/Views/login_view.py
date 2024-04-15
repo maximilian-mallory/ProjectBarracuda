@@ -23,13 +23,13 @@ def LoginVerify(request):
 
             username = data.get('username')
             password = data.get('password')
-            print(username)
 
             user = UserBackend.UserAuthenticate(username=username, password=password)
 
             if user is not None:
                 login(request, user)
-                return HttpResponse('http://localhost:8000/welcome/')
+                print(username)
+                return HttpResponseRedirect('/welcome/')
             
             else:
                 return JsonResponse({'message': 'Incorrect password'})
