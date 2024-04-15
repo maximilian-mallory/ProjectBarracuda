@@ -73,19 +73,21 @@
                 heading: 34,
                 pitch: 10,
               },
-            
-  
+              
               linksControl: true,
               panControl: false,
               enableCloseButton: false,
               addressControl: false,
               showRoadLabels: false,
-            },
+            },           
           );
-  
+
           map.setStreetView(panorama);
+          console.log("Link Control is " + panorama.linksControl);
         }
   
+       
+
         window.initialize = initialize;
       </script>
 </head>
