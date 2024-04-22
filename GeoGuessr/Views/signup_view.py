@@ -1,10 +1,10 @@
 import json
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 import os, random
 from django.conf import settings
-from GeoGuessr.Models.user import User
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.models import User
 
 def Signup(request):
     context = {}
@@ -21,16 +21,14 @@ def SignUpVerify(request):
 
             username = data.get('username')
             password = data.get('password')
-            email    = data.get('email')
 
-            new_user = User.objects.create(
+            new_user = User.objects.create_user(
                 username = username,
-                email = email,
                 password = password
             )
 
             new_user.save()
             #print(new_user.__str__ + 'has been added successfully')
-            return JsonResponse({'message': 'User added successfully'})
+            return redirect('/gamepage')
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)

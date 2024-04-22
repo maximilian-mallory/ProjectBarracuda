@@ -114,8 +114,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTHENTICATION_BACKENDS = [
-    'GeoGuessr.Controllers.UserBackend.UserBackend',
-    #'django.contrib.auth.backends.ModelBackend',
+    #'GeoGuessr.Controllers.UserBackend.UserBackend',
+    'django.contrib.auth.backends.ModelBackend',
 ]
 
 # Internationalization
