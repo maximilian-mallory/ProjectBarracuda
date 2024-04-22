@@ -10,11 +10,11 @@
     <br>
     <div class="button-group">
         <img src="../static/images/Cloud.png">
-        <button id="allTimeBtn" class="btn">All Time Scores</button>
+        <button class="btn" id="allScoresButton">All Time Scores</button>
     </div>
     <div class="button-group">
         <img src="../static/images/Cloud.png">
-        <button id="userBtn" class="btn">User Scores</button>
+        <button class="btn" id="userScoresButton">User Scores</button>
     </div>
     <div class="button-group">
         <img src="../static/images/Cloud.png">
@@ -30,6 +30,7 @@
                 <th>Rank</th>
                 <th>Player</th>
                 <th>Score</th>
+                <th>Time Taken</th>
             </tr>
         </thead>
         <tbody id="leaderboardBody">
@@ -37,30 +38,65 @@
         </tbody>
     </table>
     <script>
-        //Example leaderboard data
-        const leaderboardData = [
-            { rank: 1, player: "Player 1", score: 100 },
-            { rank: 2, player: "Player 2", score: 90 },
-            { rank: 3, player: "Player 3", score: 80 },
-            { rank: 4, player: "Player 4", score: 70 },
-            { rank: 5, player: "Player 5", score: 60 },
-        ];
 
+        function formatTime(seconds) {
+            const date = new Date(seconds * 1000);
+            return date.toLocaleTimeString('en-US', { minute: '2-digit', second: '2-digit' });
+        }
+
+        const allScores = JSON.parse('{{ allScores|escapejs }}');
+        console.log(allScores);
         //Function to populate the leaderboard table
-        function populateLeaderboard() {
+        function loadAllScores() {
             const leaderboardBody = document.getElementById("leaderboardBody");
-            leaderboardData.forEach(entry => {
+            leaderboardBody.innerHTML = "";
+            let i = 0;
+            allScores.forEach(entry => {
                 const row = document.createElement("tr");
                 row.innerHTML = `
-                    <td>${entry.rank}</td>
-                    <td>${entry.player}</td>
-                    <td>${entry.score}</td>
+                    <td>${++i}</td>
+                    <td>${entry.fields.username}</td>
+                    <td>${entry.fields.score}</td>
+                    <td>${formatTime(Math.abs(entry.fields.finalTime - 300))}</td>
                 `;
                 leaderboardBody.appendChild(row);
             });
+            console.log(leaderboardBody);
         }
 
-        populateLeaderboard();
+        function loadUserScores() {
+            const leaderboardBody = document.getElementById("leaderboardBody");
+            leaderboardBody.innerHTML = "";
+            let i = 0;
+            allScores.forEach(entry => {
+                if(entry.fields.username == "{{username}}")
+                {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${++i}</td>
+                        <td>${entry.fields.username}</td>
+                        <td>${entry.fields.score}</td>
+                        <td>${formatTime(Math.abs(entry.fields.finalTime - 300))}</td>
+                    `;
+                    leaderboardBody.appendChild(row);
+                }
+            });
+            console.log(leaderboardBody);
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+
+            const allScoresButton = document.getElementById("allScoresButton");
+            const userScoresButton = document.getElementById("userScoresButton");
+
+            allScoresButton.onclick = loadAllScores;
+            userScoresButton.onclick = loadUserScores;
+            window.onload = loadAllScores;
+
+       });
+
+
+
     </script>
 </body>
 </html>

@@ -16,7 +16,9 @@ def SaveScore(request):
             if time_left is None or num_guesses is None:
                 raise ValueError("Invalid data received")
 
-            player_id = 1
+            if request.user.is_authenticated:
+                username = request.user.username
+
             score = 1000 - abs(int(time_left) - 35) - (50 * ( int(num_guesses) - 1 ))
             current_time_utc = datetime.datetime.now()
             current_time_utc = timezone.now()
@@ -27,7 +29,7 @@ def SaveScore(request):
                 usedHintOne=False,
                 usedHintTwo=False,
                 datePlayed=timezone.now(),
-                playerID=1
+                username = username
             )
 
             game_score.save()

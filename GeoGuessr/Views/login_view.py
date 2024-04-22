@@ -7,8 +7,7 @@ from django.conf import settings
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login
-from GeoGuessr.Models.user import User
-from GeoGuessr.Controllers.UserBackend import UserBackend
+
 
 def Login(request):
     context = {}
@@ -24,12 +23,11 @@ def LoginVerify(request):
             username = data.get('username')
             password = data.get('password')
 
-            user = UserBackend.UserAuthenticate(username=username, password=password)
-
+            user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                print(username)
-                return HttpResponseRedirect('/welcome/')
+               # print(request.session.get('username', 'user.username'))
+                return redirect('/welcome/')
             
             else:
                 return JsonResponse({'message': 'Incorrect password'})
