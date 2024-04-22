@@ -20,13 +20,13 @@ body {
   
   h2 {
     text-align: center;
-    color: white;
+    color: black;
   }
   
   label {
     display: block;
     margin-bottom: 5px;
-    color: white;
+    color: black;
   }
   
   input[type="text"],
@@ -64,3 +64,10 @@ body {
     border-radius: 5px;
   }
   
+  .logo {
+    width: 15%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
