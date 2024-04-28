@@ -119,10 +119,11 @@
         <thead>
           <tr>
             <th>Position</th>
+            <th>Player</th>
             <th>Score</th>
           </tr>
         </thead>
-        <tbody id="scoreboardBody">
+        <tbody id="leaderboardBody">
           <!-- Table body will be populated dynamically -->
         </tbody>
       </table>
@@ -197,33 +198,38 @@
             }, 1000);
 
             remainingTime = timer;
-        }
+    }
 
-        window.onload = function () {
-            var fiveMinutes = 300,
-                display = document.querySelector('#timerDiv');
-            interval = startTimer(fiveMinutes, display);
-        };
-        const scores = [100, 90, 80, 70, 60, 50, 40, 30, 20, 10];
+    window.onload = function () {
+        var fiveMinutes = 300,
+            display = document.querySelector('#timerDiv');
+        interval = startTimer(fiveMinutes, display);
+    };
+    const scores = [100, 90, 80, 70, 60, 50, 40, 30, 20, 10];
+
+    const allScores = JSON.parse('{{ allScores|escapejs }}');
 
   // Function to populate the scoreboard
-  function populateScoreboard() {
-    const tbody = document.getElementById('scoreboardBody');
-    tbody.innerHTML = ''; // Clear previous entries
-    scores.forEach((score, index) => {
-      const row = document.createElement('tr');
-      const positionCell = document.createElement('td');
-      positionCell.textContent = index + 1;
-      const scoreCell = document.createElement('td');
-      scoreCell.textContent = score;
-      row.appendChild(positionCell);
-      row.appendChild(scoreCell);
-      tbody.appendChild(row);
-    });
-  }
+
+    function loadAllScores() {
+        const leaderboardBody = document.getElementById("leaderboardBody");
+        leaderboardBody.innerHTML = "";
+        let i = 0;
+        allScores.forEach(entry => {
+            if (i >= 10) return;
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${++i}</td>
+                <td>${entry.fields.username}</td>
+                <td>${entry.fields.score}</td>
+            `;
+            leaderboardBody.appendChild(row);
+        });
+        console.log(leaderboardBody);
+    }
 
   // Call the function to initially populate the scoreboard
-  populateScoreboard();
+    loadAllScores();
 </script>
 </body>
 
