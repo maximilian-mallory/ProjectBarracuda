@@ -7,6 +7,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </head>
 <body>
+  <header><p><button class="btn" id="toWelcome">Back to Home Page</button></p></header>
+
   <div class="signup-box">
     <h2>Signup</h2>
     <form>
@@ -30,6 +32,9 @@
   </div>
 
   <script>
+    toWelcome.onclick = function() {
+            window.location.href = "http://localhost:8000/welcome/"; // Change this to your desired URL
+        };
     document.addEventListener('DOMContentLoaded', function() {
         const form = document.querySelector('form');
 

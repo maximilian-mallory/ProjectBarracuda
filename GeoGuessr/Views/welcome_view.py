@@ -4,5 +4,7 @@ from django.conf import settings
 
 def Welcome(request):
     context = {}
-    print(request.user.username)
-    return render(request, 'welcomePage.html')  
+    if request.user.is_authenticated:
+        username = request.user.username
+    context['username'] = username
+    return render(request, 'welcomePage.html', context)  
