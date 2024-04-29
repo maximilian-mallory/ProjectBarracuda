@@ -10,6 +10,8 @@ def Leaderboard(request):
     if request.user.is_authenticated:
         username = request.user.username
         print(username) 
+    else:
+        username = 'null'
 
     scores = Game_Score.objects.order_by('-score')
 
