@@ -22,6 +22,9 @@
         <input type="password" id="password" name="password" placeholder="Enter your password" required>
       </div>
       <br>
+      <a href='http://localhost:8000/userportal/'>Forgot Password</a>
+      <br>
+      <br>
       <div class="button-group">
         <img src="../static/images/Cloud.png">
         <button class="btn" name="login" type="submit">Login</button>
@@ -37,10 +40,6 @@
   <script>
     document.getElementById("signupBtn").addEventListener("click", function() {
           window.location.href= 'http://localhost:8000/signup/';
-      });
-
-    document.getElementById("userPortalBtn").addEventListener("click", function() {
-          window.location.href= 'http://localhost:8000/user_portal/';
       });
   </script>
 </body>
