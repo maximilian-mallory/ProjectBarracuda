@@ -5,88 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Super Long Name Game</title>
     <link rel="stylesheet" href="../static/css/GamePage.css">
-    <script>
 
-        var numGuesses = 0;
-
-        function checkGuess() 
-        {
-          numGuesses++;
-
-          let currentLocation = "{{city_name}}";
-  
-          var guess = window.prompt("{{city_name}}");
-          
-          console.log(currentLocation);
-  
-          if( guess.toLowerCase() == currentLocation )
-          {
-            clearInterval(interval);
-            
-
-            var data = {
-            timeLeft: remainingTime.toString(),
-            numGuesses: numGuesses.toString()
-            };
-
-            fetch('/save_score/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Error saving guess');
-                }
-                return response.text();
-            })
-            .then(data => {
-                console.log(JSON.stringify(data));
-                alert("Correct");
-            })
-            .catch(error => {
-                console.error('Error saving guess:', error);
-                alert("Error saving guess");
-            });
-          }
-          else
-          {
-            alert("Wrong");
-          }
-          
-          console.log(numGuesses);
-        }
-  
-        function initialize ()
-        {
-          var latitude = parseFloat("{{lat_con}}");
-          var longitude = parseFloat("{{long_con}}");
-          const fenway = { lat: latitude, lng: longitude };
-         
-          const panorama = new google.maps.StreetViewPanorama(
-            document.getElementById("pano"),
-            {
-              position: fenway,
-              pov: {
-                heading: 34,
-                pitch: 10,
-              },
-              
-              linksControl: true,
-              panControl: false,
-              enableCloseButton: false,
-              addressControl: false,
-              showRoadLabels: false,
-            },           
-          );
-        }
-  
-       
-
-        window.initialize = initialize;
-      </script>
 </head>
 <body>
 
@@ -98,6 +17,7 @@
 
 <div id="container">
     <div class="side-box">
+        <div>
         <h2>Hints</h2>
         <ul>
             <li>Hint</li>
@@ -109,6 +29,12 @@
             <li>Hint</li>
             <li>Hint</li>
         </ul>
+        <br><br>
+        </div>
+        <div class="button-group">
+          <img src="../static/images/Cloud.png">
+          <button class="btn" onclick="window.location.reload()">New Game (Reload Map)</button>
+        </div>
     </div>
     <div id="pano"></div>
     <div class="side-box">
@@ -126,19 +52,23 @@
       </table>
         </div>
 </div>
-<div class="button-group">
-  <img src="../static/images/Cloud.png">
-  <button class="btn" onclick="window.location.reload()">New Game (Reload Map)</button>
-</div>
-        <!-- I will be adding AJAX funcitonality to the above button to load a new game asynchronously-->
-        
+       <!-- I will be adding AJAX funcitonality to the above button to load a new game asynchronously-->
+        <br>
+       <div>
+
+          <input
+            type="text"
+            id="userGuessInput"
+            placeholder="Enter your guess..."
+          />
           <input
             class="button"
             type="button" 
             value="{{city_name}}"
             onclick="checkGuess();"
           />
-       
+        </div>
+        <br>
         <!-- this is the button for guessing. I can look into getting a better popup window, or we can have a permanent textbox within the game page-->
     
 
@@ -160,6 +90,87 @@
     >
 </script>
 <script>
+
+var numGuesses = 0;
+
+const userGuess = document.getElementById('userGuessInput');
+
+function checkGuess() 
+{
+  numGuesses++;
+
+  let currentLocation = "{{city_name}}";
+  
+  guess = userGuess.value;
+  
+  console.log(guess);
+
+  if( guess.toLowerCase() == currentLocation )
+  {
+    clearInterval(interval);
+    
+    var data = {
+    timeLeft: remainingTime.toString(),
+    numGuesses: numGuesses.toString()
+    };
+
+    fetch('/save_score/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error saving guess');
+        }
+        return response.text();
+    })
+    .then(data => {
+        console.log(JSON.stringify(data));
+        alert("Correct");
+    })
+    .catch(error => {
+        console.error('Error saving guess:', error);
+        alert("Error saving guess");
+    });
+  }
+  else
+  {
+    alert("Wrong");
+  }
+  
+  console.log(numGuesses);
+}
+
+function initialize ()
+{
+  var latitude = parseFloat("{{lat_con}}");
+  var longitude = parseFloat("{{long_con}}");
+  const fenway = { lat: latitude, lng: longitude };
+ 
+  const panorama = new google.maps.StreetViewPanorama(
+    document.getElementById("pano"),
+    {
+      position: fenway,
+      pov: {
+        heading: 34,
+        pitch: 10,
+      },
+      
+      linksControl: true,
+      panControl: false,
+      enableCloseButton: false,
+      addressControl: false,
+      showRoadLabels: false,
+    },           
+  );
+}
+
+
+
+window.initialize = initialize;
 
   var interval;
 
