@@ -3,7 +3,7 @@ from django.conf import settings
 
 def AddRandomLocation( context ):
     random_locs = {
-        'newn york city': {'lat': 40.7128, 'long': -74.0061},
+        'new york city': {'lat': 40.7128, 'long': -74.0061},
         'los angeles': {'lat': 34.0523, 'long': -118.2436},
         'chicago': {'lat': 41.8782, 'long': -87.6297}, 
         'houston': {'lat': 29.7605, 'long': -95.3697} ,

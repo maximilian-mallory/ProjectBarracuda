@@ -8,7 +8,6 @@
     <script>
 
         var numGuesses = 0;
-        var remainingTime = 0;
 
         function checkGuess() 
         {
@@ -24,6 +23,7 @@
           {
             clearInterval(interval);
             
+
             var data = {
             timeLeft: remainingTime.toString(),
             numGuesses: numGuesses.toString()
@@ -81,9 +81,6 @@
               showRoadLabels: false,
             },           
           );
-
-          map.setStreetView(panorama);
-          console.log("Link Control is " + panorama.linksControl);
         }
   
        
@@ -131,7 +128,7 @@
 </div>
 <div class="button-group">
   <img src="../static/images/Cloud.png">
-  <button class="btn" onclick="initialize()">New Game (Reload Map)</button>
+  <button class="btn" onclick="window.location.reload()">New Game (Reload Map)</button>
 </div>
         <!-- I will be adding AJAX funcitonality to the above button to load a new game asynchronously-->
         
@@ -158,7 +155,7 @@
     </div>
 </div>
 <script
-      src="https://maps.googleapis.com/maps/api/js?key={{ key }}&callback=initialize&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key={{ key }}&loading=async&callback=initialize&v=weekly"
       async
     >
 </script>
@@ -167,38 +164,35 @@
   var interval;
 
   function startTimer(duration, display) {
-            var timer = duration, minutes, seconds;
-            var interval = setInterval(function () {
+    var timer = duration;
+    var interval = setInterval(function () {
+        var minutes = parseInt(timer / 60, 10);
+        var seconds = parseInt(timer % 60, 10);
 
-                //figures out how many minutes and seconds there are based on the duration variable
-                minutes = parseInt(timer / 60, 10);
-                seconds = parseInt(timer % 60, 10);
-                
-                // adds padding
-                //minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
 
-                //display content
-                display.textContent = minutes + ":" + seconds;
+        display.textContent = minutes + ":" + seconds;
 
-                if (--timer < 0) {
-                    clearInterval(interval);
-                    display.textContent = "Time's up!";
-                } else if (timer < 180 && timer >= 60) {
-                    display.style.color = "yellow";
-                } else if (timer < 60 && timer >= 30) {
-                    display.style.color = "red";
-                } else if (timer < 30 && timer % 2 == 1) {
-                    display.style.color = "red";
-                    display.style.backgroundColor = "black";
-                } else if (timer < 30 && timer % 2 == 0) {
-                    display.style.color = "red";
-                    display.style.backgroundColor = "white";
-                }
-            }, 1000);
+        if (--timer < 0) {
+            clearInterval(interval);
+            display.textContent = "Time's up!";
+        } else if (timer < 180 && timer >= 60) {
+            display.style.color = "yellow";
+        } else if (timer < 60 && timer >= 30) {
+            display.style.color = "red";
+        } else if (timer < 30 && timer % 2 == 1) {
+            display.style.color = "red";
+            display.style.backgroundColor = "black";
+        } else if (timer < 30 && timer % 2 == 0) {
+            display.style.color = "red";
+            display.style.backgroundColor = "white";
+        }
 
-            remainingTime = timer;
-    }
+        remainingTime = timer; // Update remainingTime as the timer counts down
+    }, 1000);
+
+      remainingTime = timer; // Set remainingTime initially
+  }
 
     window.onload = function () {
         var fiveMinutes = 300,
