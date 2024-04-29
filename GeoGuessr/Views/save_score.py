@@ -19,7 +19,7 @@ def SaveScore(request):
             if request.user.is_authenticated:
                 username = request.user.username
 
-            score = 1000 - abs(int(time_left) - 35) - (50 * ( int(num_guesses) - 1 ))
+            score = 1000 - abs(int(time_left) - 300) - (50 * ( int(num_guesses) - 1 ))
             current_time_utc = datetime.datetime.now()
             current_time_utc = timezone.now()
 

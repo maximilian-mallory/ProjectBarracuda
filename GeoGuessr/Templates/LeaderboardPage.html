@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../static/css/LeaderboardPage.css">
 </head>
 <body>
+    <header><p><button class="btn" id="toWelcome">Back to Home Page</button></p></header>
     <h1>Player Leaderboard</h1>
     <br>
     <div class="button-group">
@@ -39,6 +40,10 @@
     </table>
     <script>
 
+
+        toWelcome.onclick = function() {
+            window.location.href = "http://localhost:8000/welcome/"; // Change this to your desired URL
+        };
         function formatTime(seconds) {
             const date = new Date(seconds * 1000);
             return date.toLocaleTimeString('en-US', { minute: '2-digit', second: '2-digit' });
