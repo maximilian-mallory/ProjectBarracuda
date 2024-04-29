@@ -3,19 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Forgot Password</title>
-    <!-- <link rel="stylesheet" href="coltonsstyle.css"> -->
+    <link rel="stylesheet" href="../static/css/userPortalPage.css">
 </head>
 <body>
-    <div class="container">
+    <div class="password-box">
         <h2>Forgot Password</h2>
-        <form action="PasswordPage.html" method="post">
+        <form action="http://localhost:8000/password/" method="post">
+            {% csrf_token %}
             <div class="input-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
             </div>
             <br>
-            <button type="submit">Reset Password</button>
+            <div class="button-group">
+                <img src="../static/images/Cloud.png">
+                <button class="btn" name="forget" type="submit">Submit</button>
+              </div>
         </form>
     </div>
+    <script>
+    document.getElementById("signupBtn").addEventListener("click", function() {
+          window.location.href= 'http://localhost:8000/signup/';
+      });
+  </script>
 </body>
 </html>
