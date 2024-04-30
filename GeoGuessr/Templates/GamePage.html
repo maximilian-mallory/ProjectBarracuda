@@ -19,17 +19,14 @@
     <div class="side-box">
         <div>
         <h2>Hints</h2>
-        <ul>
-            <li>Hint</li>
-            <li>Hint</li>
-            <li>Hint</li>
-            <li>Hint</li>
-            <li>Hint</li>
-            <li>Hint</li>
-            <li>Hint</li>
-            <li>Hint</li>
-        </ul>
-        <br><br>
+        <br>
+        <button id="hint1btn">Hint 1</button>
+        <br>
+        <p id="hint1content"> </p>
+        <br>
+        <button id="hint1btn">Hint 2</button>
+        
+        <br><br><br><br>
         </div>
         <div class="button-group">
           <img src="../static/images/Cloud.png">
@@ -91,6 +88,46 @@
 </script>
 <script>
 
+var hint1btn = document.getElementById('hint1btn');
+var hint1content = document.getElementById('hint1content');
+
+hint1btn.onclick = function () {
+
+  var data = {
+    latitude: latitude,
+    longitude: longitude
+  }
+
+  fetch('/getweather/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  .then(response => {
+    if (!response.ok) {
+            throw new Error('Error retrieving data');
+        }
+    return response.text();
+  })
+  .then(jsonString => {
+    
+    var jsonData = JSON.parse(jsonString);
+    
+    let temperature = jsonData.temperature;
+
+    hint1content.textContent = `The current temperature is ${temperature}°F`;
+    console.log(jsonData['temperature']);
+    
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+
+};
+
+
 var numGuesses = 0;
 
 const userGuess = document.getElementById('userGuessInput');
@@ -144,10 +181,12 @@ function checkGuess()
   console.log(numGuesses);
 }
 
+const latitude = parseFloat("{{lat_con}}");
+const longitude = parseFloat("{{long_con}}");
+
 function initialize ()
 {
-  var latitude = parseFloat("{{lat_con}}");
-  var longitude = parseFloat("{{long_con}}");
+
   const fenway = { lat: latitude, lng: longitude };
  
   const panorama = new google.maps.StreetViewPanorama(
