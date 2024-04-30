@@ -24,7 +24,10 @@
         <br>
         <p id="hint1content"> </p>
         <br>
-        <button id="hint1btn">Hint 2</button>
+        <button id="hint2btn">Hint 2</button>
+        <br>
+        <p id="hint2content"> </p>
+        <br>
         
         <br><br><br><br>
         </div>
@@ -90,8 +93,10 @@
 
 var hint1btn = document.getElementById('hint1btn');
 var hint1content = document.getElementById('hint1content');
+var hint2btn = document.getElementById('hint2btn');
+var hint2content = document.getElementById('hint2content');
 
-hint1btn.onclick = function () {
+hint1btn.onclick = function() {
 
   var data = {
     latitude: latitude,
@@ -126,6 +131,41 @@ hint1btn.onclick = function () {
   });
 
 };
+
+hint2btn.onclick = function() {
+
+  var data = {
+    city: "{{city_name}}",
+  }
+
+  fetch('/getbird/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  .then(response => {
+    if (!response.ok) {
+            throw new Error('Error retrieving data');
+        }
+    return response.text();
+  })
+  .then(jsonString => {
+    
+    var jsonData = JSON.parse(jsonString);
+    
+    let bird = jsonData.bird;
+
+    hint2content.textContent = `The state bird is the ${bird}`;
+    console.log(jsonData.bird);
+    
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+
+}
 
 
 var numGuesses = 0;

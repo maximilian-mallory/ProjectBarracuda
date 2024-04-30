@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path
 
 #to import views, ' from GeoGuessr.Views.some_view import function '
+from GeoGuessr.Views.bird_watching_view import GetBird
 from GeoGuessr.Views.gamepage_view import GamePage
 from GeoGuessr.Views.nws_data_view import GetWeather
 from GeoGuessr.Views.welcome_view import Welcome
@@ -41,6 +42,7 @@ urlpatterns = [
     path('save_score/', SaveScore, name='SaveScore'),
     path('sign-up-verify/', SignUpVerify, name='SignUpVerify'),
     path('login-verify/', LoginVerify, name='LoginVerify'),
-    path('getweather/', GetWeather, name='GetWeather' )
+    path('getweather/', GetWeather, name='GetWeather' ),
+    path('getbird/', GetBird, name='GetBird' ),
 
 ]
