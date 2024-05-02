@@ -20,6 +20,7 @@ from django.urls import path
 #to import views, ' from GeoGuessr.Views.some_view import function '
 from GeoGuessr.Views.bird_watching_view import GetBird
 from GeoGuessr.Views.gamepage_view import GamePage
+from GeoGuessr.Views.logout_view import Logout
 from GeoGuessr.Views.nws_data_view import GetWeather
 from GeoGuessr.Views.welcome_view import Welcome
 from GeoGuessr.Views.userportal_view import UserPortal
@@ -44,5 +45,5 @@ urlpatterns = [
     path('login-verify/', LoginVerify, name='LoginVerify'),
     path('getweather/', GetWeather, name='GetWeather' ),
     path('getbird/', GetBird, name='GetBird' ),
-
+    path('logout/', Logout, name='Logout'),
 ]
