@@ -15,7 +15,12 @@
         </span>
     </h1>
     <br>
-    <h4>Welcome to the Game</h4>
+    {% if username != 'null'%}
+        <h4>Welcome, {{ username }}!</h4>
+    {% else %}
+        <h4>Welcome to the Game</h4>
+    {% endif %}
+
     <div class="button-group">
         <img src="../static/images/Cloud.png">
         <button id="casualBtn" class="btn">Casual</button>
@@ -31,12 +36,14 @@
     </div>
     <div class="button-group">
         <img src="../static/images/Cloud.png">
-        <button id="loginBtn" class="btn">Login</button>
+        <button id="loginBtn" class="btn"></button>
     </div>
     <br>
 
     <img class= "logo" src="../static/images/Project-Barracuda_Logo.jpg">
     <script>
+        
+        console.log("{{username}}");
         document.getElementById("leaderBtn").addEventListener("click", function() {
             window.location.href= 'http://localhost:8000/leaderboard/';
             //Here is the link I used to store the variables
@@ -54,9 +61,52 @@
             window.location.href= 'http://localhost:8000/gamepage/';
         });
 
-        document.getElementById("loginBtn").addEventListener("click", function() {
-            window.location.href= 'http://localhost:8000/login/';
-        });
+        var loginBtn = document.getElementById('loginBtn');
+
+        function toggleLoginLogout () 
+        {
+
+            let username = "{{username}}"
+
+            if(username != 'null')
+            {
+                loginBtn.textContent = 'Logout';
+                loginBtn.onclick = function () 
+                {
+                    fetch('/logout/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'same-origin', 
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Logout failed');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(data.message);
+                    window.location.reload();
+                })
+                .catch(error => {
+                    // Handle error
+                    console.error('Logout error:', error);
+                });
+                }
+            }
+            else 
+            {
+                loginBtn.textContent = 'Login';
+                loginBtn.onclick = function () {
+                    window.location.href = 'http://localhost:8000/login/';
+                };
+            }
+
+        }
+
+        window.addEventListener('load', toggleLoginLogout);
     </script>
 </body>
 </html>

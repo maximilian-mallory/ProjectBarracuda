@@ -8,14 +8,11 @@ from GeoGuessr.Controllers.bird_controller import SetBird
 def GetBird(request):
 
     data = json.loads(request.body)
-    city = data.get('city')
-    print(city)
+    city = data.get('city')   
     bird = SetBird(city)
-    print(bird);
+    
     try:
-
         bird = SetBird(city)
-        print(bird);
         return JsonResponse({'bird': bird})
     
     except Exception as e:

@@ -91,6 +91,9 @@
 </script>
 <script>
 
+var hintsUsed = 0;
+var hintOne = false;
+var hintTwo = false;
 var hint1btn = document.getElementById('hint1btn');
 var hint1content = document.getElementById('hint1content');
 var hint2btn = document.getElementById('hint2btn');
@@ -123,6 +126,9 @@ hint1btn.onclick = function() {
     let temperature = jsonData.temperature;
 
     hint1content.textContent = `The current temperature is ${temperature}°F`;
+
+    hintsUsed++;
+    hintOne = true;
     console.log(jsonData['temperature']);
     
   })
@@ -159,14 +165,15 @@ hint2btn.onclick = function() {
 
     hint2content.textContent = `The state bird is the ${bird}`;
     console.log(jsonData.bird);
-    
+
+    hintsUsed++;
+    hintTwo = true;
   })
   .catch(error => {
     console.error('Error:', error);
   });
 
 }
-
 
 var numGuesses = 0;
 
@@ -188,7 +195,9 @@ function checkGuess()
     
     var data = {
     timeLeft: remainingTime.toString(),
-    numGuesses: numGuesses.toString()
+    numGuesses: numGuesses.toString(),
+    hintOne: hintOne,
+    hintTwo: hintTwo
     };
 
     fetch('/save_score/', {
@@ -205,7 +214,7 @@ function checkGuess()
         return response.text();
     })
     .then(data => {
-        console.log(JSON.stringify(data));
+        console.log(JSON.parse(data));
         alert("Correct");
     })
     .catch(error => {
@@ -243,6 +252,7 @@ function initialize ()
       enableCloseButton: false,
       addressControl: false,
       showRoadLabels: false,
+      motionTracking: false,
     },           
   );
 }
