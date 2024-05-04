@@ -5,6 +5,7 @@ import os, random
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
 
 def Signup(request):
     context = {}
@@ -28,7 +29,10 @@ def SignUpVerify(request):
             )
 
             new_user.save()
-            #print(new_user.__str__ + 'has been added successfully')
-            return redirect('/gamepage')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+               # print(request.session.get('username', 'user.username'))
+                return redirect('/welcome/')
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
