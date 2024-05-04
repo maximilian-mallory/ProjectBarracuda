@@ -9,15 +9,16 @@
 </head>
 <body>
 
-<div id="container">
+<div class="container">
     <div id="title" class="main-title">
         <h1>The Legend of Culture: Barracuda Quest the Game 2 Electric Boogaloo Definitive Edition Remastered 2</h1>
     </div>
 </div>
 
-<div id="container">
-    <div class="side-box">
-        <div>
+<div id="bottom-container" class="container">
+  <div class="maincontent">
+    <div class="hintscontainer">
+        <div id="hints" class="bottombox-container">
         <h2>Hints</h2>
         <br>
         <button id="hint1btn">Hint 1</button>
@@ -30,31 +31,12 @@
         <br>
         
         <br><br><br><br>
-        </div>
         <div class="button-group">
           <img src="../static/images/Cloud.png">
           <button class="btn" onclick="window.location.reload()">New Game (Reload Map)</button>
         </div>
-    </div>
-    <div id="pano"></div>
-    <div class="side-box">
-      <table class="scoreboard">
-        <thead>
-          <tr>
-            <th>Position</th>
-            <th>Player</th>
-            <th>Score</th>
-          </tr>
-        </thead>
-        <tbody id="leaderboardBody">
-          <!-- Table body will be populated dynamically -->
-        </tbody>
-      </table>
-        </div>
-</div>
-       <!-- I will be adding AJAX funcitonality to the above button to load a new game asynchronously-->
-        <br>
-       <div>
+        <br><br><br><br><br>
+        <div class="container">
 
           <input
             type="text"
@@ -68,22 +50,45 @@
             onclick="checkGuess();"
           />
         </div>
-        <br>
-        <!-- this is the button for guessing. I can look into getting a better popup window, or we can have a permanent textbox within the game page-->
+        </div>
+        
+      </div>
     
-
-<div id="container">
-    <div id="timerDiv" class="side-box bottom1">
+    <div id="pano" ></div>
+    <div class="scoreboardcontainer">
+      <table class="scoreboard">
+        <thead>
+          <tr>
+            <th>Position</th>
+            <th>Player</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboardBody">
+          <!-- Table body will be populated dynamically -->
+        </tbody>
+      </table>
     </div>
-    <div class="main-content bottom-content">
+  </div>   
+  
+  <div class="maincontent" id="inner-container">
+    <div id="timerDiv" class="bottombox-container">Ready?</div>
+    <div id="encouragement" class="bottombox-container">
         <h2>Quotes to keep you going!</h2>
         <p>"You don't suck!</p>
         <p>"Your parents divorce wasn't your fault!</p>
     </div>
-    <div class="side-box bottom">
+    <div id="logo" class="bottombox-container">
       <img class= "logo" src="../static/images/Project-Barracuda_Logo.jpg">
     </div>
+  </div>
+  
 </div>
+
+
+
+  
+        <!-- this is the button for guessing. I can look into getting a better popup window, or we can have a permanent textbox within the game page-->
 <script
       src="https://maps.googleapis.com/maps/api/js?key={{ key }}&loading=async&callback=initialize&v=weekly"
       async

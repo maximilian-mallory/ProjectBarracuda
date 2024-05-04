@@ -22,7 +22,8 @@ def SaveScore(request):
             if request.user.is_authenticated:
                 username = request.user.username
 
-            score = 1000 - abs(int(time_left) - 300) - (50 * ( int(num_guesses) - 1 ))
+            score = 1000 - abs(int(time_left) - 300) * (500 / 300) - (50 * (int(num_guesses) - 1))
+            
             if hintOne is not False:
                 score -= 100
             if hintTwo is not False:

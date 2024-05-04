@@ -42,7 +42,7 @@
 
     <img class= "logo" src="../static/images/Project-Barracuda_Logo.jpg">
     <script>
-        
+
         console.log("{{username}}");
         document.getElementById("leaderBtn").addEventListener("click", function() {
             window.location.href= 'http://localhost:8000/leaderboard/';
@@ -55,20 +55,34 @@
             localStorage.setItem("isRanked",false);
             window.location.href= 'http://localhost:8000/gamepage/';
         });
- 
-        document.getElementById("rankedBtn").addEventListener("click", function() {
-            localStorage.setItem("isRanked",true);
-            window.location.href= 'http://localhost:8000/gamepage/';
-        });
+
+        var rankedBtn = document.getElementById('rankedBtn');
+
+        function tryRanked()
+        {
+            if("{{username}}" != 'null')
+            {
+                    window.location.href= 'http://localhost:8000/gamepage/';
+            }
+            else 
+            {
+                var choice = confirm("You need to login to play ranked. Would you like to login and play ranked?");
+        
+                if (choice) 
+                {
+                    // If user chooses to login and play ranked
+                    window.location.href = 'http://localhost:8000/login/';
+                }        
+            }
+        }
+
+        rankedBtn.onclick = tryRanked;
 
         var loginBtn = document.getElementById('loginBtn');
 
         function toggleLoginLogout () 
         {
-
-            let username = "{{username}}"
-
-            if(username != 'null')
+            if("{{username}}" != 'null')
             {
                 loginBtn.textContent = 'Logout';
                 loginBtn.onclick = function () 
