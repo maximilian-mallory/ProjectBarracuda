@@ -23,14 +23,14 @@
         <br>
         <div class="button-group">
           <img src="../static/images/Cloud.png">
-          <button id="hint1btn" class="btn">Hint 1</button>
+          <button id="hint1btn" class="btn">Temperature</button>
         </div>
         <br>
         <p id="hint1content"> </p>
         <br>
         <div class="button-group">
           <img src="../static/images/Cloud.png">
-          <button id="hint2btn" class="btn">Hint 2</button>
+          <button id="hint2btn" class="btn">State Bird</button>
         </div>
         <br>
         <p id="hint2content"> </p>
@@ -39,7 +39,7 @@
         <br><br><br><br>
         <div class="button-group">
           <img src="../static/images/Cloud.png">
-          <button class="btn" onclick="window.location.reload()">New Game (Reload Map)</button>
+          <button class="btn" onclick="window.location.reload()">New Game</button>
         </div>
         <br><br><br><br><br>
         <div class="container">
@@ -55,6 +55,14 @@
             type="button" 
             value="{{city_name}}"
             onclick="checkGuess();"
+          />
+        </div>
+        <div class="container">
+          <input
+            class="button"
+            type="button" 
+            value="Surrender?"
+            onclick="window.location.href= 'http://localhost:8000/welcome/';"
           />
         </div>
         </div>
