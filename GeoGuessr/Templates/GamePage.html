@@ -21,11 +21,17 @@
         <div id="hints" class="bottombox-container">
         <h2>Hints</h2>
         <br>
-        <button id="hint1btn">Hint 1</button>
+        <div class="button-group">
+          <img src="../static/images/Cloud.png">
+          <button id="hint1btn" class="btn">Hint 1</button>
+        </div>
         <br>
         <p id="hint1content"> </p>
         <br>
-        <button id="hint2btn">Hint 2</button>
+        <div class="button-group">
+          <img src="../static/images/Cloud.png">
+          <button id="hint2btn" class="btn">Hint 2</button>
+        </div>
         <br>
         <p id="hint2content"> </p>
         <br>
@@ -43,6 +49,7 @@
             id="userGuessInput"
             placeholder="Enter your guess..."
           />
+          <br>
           <input
             class="button"
             type="button" 
@@ -281,8 +288,10 @@ window.initialize = initialize;
         if (--timer < 0) {
             clearInterval(interval);
             display.textContent = "Time's up!";
+        } else if (timer > 180) {
+            display.style.color = "green";
         } else if (timer < 180 && timer >= 60) {
-            display.style.color = "yellow";
+            display.style.color = "orange";
         } else if (timer < 60 && timer >= 30) {
             display.style.color = "red";
         } else if (timer < 30 && timer % 2 == 1) {
