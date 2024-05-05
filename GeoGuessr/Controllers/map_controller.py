@@ -37,20 +37,20 @@ def AddRandomLocation( context ):
 
         #'juneau':
         #[
-        #    {'lat': 58.3019, 'long': -134.4197},
-        #    {'lat': 58.3029, 'long': -134.4122}
+        #    {'lat': 58.3022, 'long': -134.4223},
+        #    {'lat': 58.3029, 'long': -134.4119}
         #],
         
         #'phoenix':
         #[
         #    {'lat': 33.4483, 'long': -112.0740},
-        #    {'lat': 33.4484, 'long': -112.0742}
+        #    {'lat': 33.4500, 'long': -112.0740}
         #],
 
         #'little rock':
         #[
         #    {'lat': 34.7465, 'long': -92.2896},
-        #    {'lat': 34.7461, 'long': -92.2889}
+        #    {'lat': 34.7453, 'long': -92.2758}
         #],
 
         #'sacramento':
@@ -61,7 +61,7 @@ def AddRandomLocation( context ):
 
         #'denver':
         #[
-        #    {'lat': 39.7392, 'long': -104.9903},
+        #    {'lat': 39.7474, 'long': -104.9927},
         #    {'lat': 39.7388, 'long': -104.9915}
         #],
 
@@ -79,14 +79,14 @@ def AddRandomLocation( context ):
 
         #'tallahassee':
         #[
-        #    {'lat': 30.4383, 'long': -84.2807},
+        #    {'lat': 30.4429, 'long': -84.2830},
         #    {'lat': 30.4377, 'long': -84.2831}
         #],
 
         #'atlanta':
         #[
-        #    {'lat': 33.7490, 'long': -84.3880},
-        #    {'lat': 33.7485, 'long': -84.3879}
+        #    {'lat': 33.7485, 'long': -84.3879},
+        #    {'lat': 33.7537, 'long': -84.3863}
         #],
 
         #'honolulu':
@@ -122,7 +122,7 @@ def AddRandomLocation( context ):
         #'topeka':
         #[
         #    {'lat': 39.0473, 'long': -95.6752},
-        #    {'lat': 39.0480, 'long': -95.6781}
+        #    {'lat': 39.0517, 'long': -95.6733}
         #],
 
         #'frankfort':
