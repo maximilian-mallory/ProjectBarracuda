@@ -13,22 +13,66 @@ def AddRandomLocation( context ):
         'dallas': {'lat': 32.7766, 'long': -96.7969} ,
         'san jose': {'lat': 37.3383, 'long': -121.8862} ,"""
     random_locs = {
-        'providence': 
+        # 'providence': 
+        # [
+            # {'lat': 41.8230, 'long': -71.4142},  #First location
+            # {'lat': 41.8237, 'long': -71.4154}    #Second location
+        # ],
+        # 'columbia': 
+        # [
+        #     { 'lat':34.0007 ,'long': -81.0348 },
+        #     { 'lat':34.0065 ,'long': -81.0332  },
+        # ]
+        # 'pierre': 
+        # [
+        #     { 'lat':44.3683 ,'long': -100.3506 },  # First location
+        #     { 'lat':44.3665 ,'long': -100.3554 },  # Second location
+        # ],
+        # 'nashville': 
+        # [
+        #     { 'lat':36.1627 ,'long': -86.7816 },  # First location
+        #     { 'lat':36.1613 ,'long': -86.7825 },  # Second location
+        # ],
+        # 'austin': 
+        # [
+        #     { 'lat':30.2672 ,'long': -97.7431 },  # First location
+        #     { 'lat':30.2685 ,'long': -97.7350 }  # Second location
+        # ],
+        # 'salt lake city': 
+        # [
+        #     { 'lat':40.7608 ,'long': -111.8910 },  # First location
+        #     { 'lat':40.7619 ,'long': -111.8885 },  # Second location
+        # ],
+        # 'montpelier': 
+        # [
+        #     { 'lat':44.2601 ,'long': -72.5754 },  # First location
+        #     { 'lat':44.2619 ,'long': -72.5741 },  # Second location
+        # ],
+        # 'richmond': 
+        # [
+        #     { 'lat':37.5407 ,'long': -77.4360 },  # First location
+        #     { 'lat':37.5421 ,'long': -77.4388 },  # Second location
+        # ],
+        # 'olympia': 
+        # [
+        #     { 'lat':47.0379 ,'long': -122.9007 },  # First location
+        #     { 'lat':47.0392 ,'long': -122.9031 },  # Second location
+        # ],
+        # 'charleston': 
+        # [
+        #     { 'lat':38.3498 ,'long': -81.6326},  # First location
+        #     { 'lat':38.3512 ,'long': -81.6345},  # Second location
+        # ],
+        # 'madison': 
+        # [
+        #     { 'lat':43.0737 ,'long': -89.3846 },  # First location
+        #     { 'lat':43.0759 ,'long': -89.3882 },  # Second location
+        # ],
+        'cheyenne': 
         [
-            {'lat': 41.8230, 'long': -71.4142},  # First location
-            {'lat': 41.8237, 'long': -71.4154}    # Second location
+            { 'lat':41.1399 ,'long': -104.8202 },  # First location
+            { 'lat':41.1411 ,'long': -104.8156 },  # Second location
         ],
-        #'columbia': { 'lat':34.0007 ,'long': -81.0348 },
-        #'pierre': { 'lat':44.3683 ,'long': -100.3506 },
-        #'nashville': { 'lat':36.1627 ,'long': -86.7816 },
-        #'austin': { 'lat':30.2672 ,'long': -97.7431 },
-        #'salt lake city': { 'lat':40.7608 ,'long': -111.8910 },
-        #'montpelier': { 'lat':44.2601 ,'long': -72.5754 },
-        #'richmond': { 'lat':37.5407 ,'long': -77.4360 },
-        #'olympia': { 'lat':47.0379 ,'long': -122.9007 },
-        #'charleston': { 'lat':38.3498 ,'long': -81.6326},
-        #'madison': { 'lat':43.0737 ,'long': -89.3846 },
-        #'cheyenne': { 'lat':41.1399 ,'long': -104.8202 },
         #'montgomery':
         #[
         #    {'lat': 32.3773, 'long': -86.3000},
