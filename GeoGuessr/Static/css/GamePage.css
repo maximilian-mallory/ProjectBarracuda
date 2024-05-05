@@ -147,8 +147,8 @@ body {
 
 #pano {
     float: center;
-    height: 650px;
-    width: 650px;
+    height: 500px;
+    width: 500px;
     padding: 1%;
   }
   
@@ -173,8 +173,8 @@ body {
   }
   
   .button-group img {
-    width: 30%;
-    height: 50%;
+    width: 70%;
+    height: auto;
   }
   
   .button-group .btn {

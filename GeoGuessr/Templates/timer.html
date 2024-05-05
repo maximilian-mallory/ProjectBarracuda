@@ -33,7 +33,7 @@ function startTimer(duration, display) {
             clearInterval(interval);
             display.textContent = "Time's up!";
         } else if (timer < 20 && timer >=10) {
-            display.style.color = "yellow";
+            display.style.color = "orange";
         } else if (timer >= 20) {
             display.style.color = "green";
         } else if (timer < 10 && timer % 2 == 1) {
