@@ -9,7 +9,7 @@ def Login(request):
     context = {}
     return render(request, 'LoginPage.html')   
 
-@csrf_exempt
+
 def LoginVerify(request):
     if request.method == 'POST':
         try:

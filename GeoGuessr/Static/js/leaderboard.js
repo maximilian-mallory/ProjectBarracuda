@@ -1,12 +1,16 @@
+//simple nav function
 toWelcome.onclick = function() {
     window.location.href = "http://localhost:8000/welcome/"; // Change this to your desired URL
 };
+//originally wanted to track the date and time the user played matches at but left it out
 function formatTime(seconds) {
     const date = new Date(seconds * 1000);
     return date.toLocaleTimeString('en-US', { minute: '2-digit', second: '2-digit' });
 }
 
+//this will query all the data one time and filter it later
 function loadAllScores() {
+    //the page loads with all scores displayed and is attached to a button
     const leaderboardBody = document.getElementById("leaderboardBody");
     leaderboardBody.innerHTML = "";
     let i = 0;
@@ -22,8 +26,8 @@ function loadAllScores() {
     });
 }
 
+//this will activate on click if there is a user logged in, otherwise they are asked to login and redirected
 function loadUserScores() {
-    console.log(username);
     if(username !== 'null')
     {
         const leaderboardBody = document.getElementById("leaderboardBody");
@@ -55,6 +59,7 @@ function loadUserScores() {
     }
 }
 
+//attach functions to elements at loadtime
 document.addEventListener("DOMContentLoaded", function() {
 
     allScoresButton.onclick = loadAllScores;

@@ -4,8 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from GeoGuessr.Controllers.bird_controller import SetFlower
 
-@csrf_exempt
-def GetBird(request):
+def GetFlower(request):
 
     data = json.loads(request.body)
     city = data.get('city')   
@@ -13,7 +12,7 @@ def GetBird(request):
     
     try:
         flower = SetFlower(city)
-        print(flower)
+        #simply return a json response for the flower hint
         return JsonResponse({'flower': flower})
     
     except Exception as e:

@@ -1,13 +1,15 @@
+//simple nav function
 toWelcome.onclick = function() {
     window.location.href = "http://localhost:8000/welcome/"; // Change this to your desired URL
 };
-
+//when the page is loaded, we can add an event listener to our form
 document.addEventListener('DOMContentLoaded', function() {
   const form = document.querySelector('form');
 
   form.addEventListener('submit', function(event) {
     event.preventDefault();
 
+    //immediately hash password
     const username = document.querySelector('#username').value.trim();
     const password = CryptoJS.SHA1(document.querySelector('#password').value.trim()).toString();
 
@@ -20,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'X-CSRFToken': csrfToken
       },
       body: JSON.stringify(data)
     })
@@ -35,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     })
     .then(data => {
-
+      //if we make it here, it means the passwords did not match and an error was thrown on the backen
       window.alert(data.error);
     })
     .catch(error => {

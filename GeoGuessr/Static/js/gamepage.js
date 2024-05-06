@@ -1,3 +1,4 @@
+//this function is used to access the google api with a lat long combo
 function initialize ()
 {
   const location = { lat: latitude, lng: longitude };
@@ -21,6 +22,7 @@ function initialize ()
   );
 }
 
+//this is the function used to start the timer
 function startTimer(duration, display) 
 {
     var timer = duration;
@@ -32,20 +34,37 @@ function startTimer(duration, display)
 
         display.textContent = minutes + ":" + seconds;
 
-        if (--timer < 0) {
+        //when the user is out of time, let them know
+        if (--timer < 0) 
+        {
             clearInterval(interval);
             display.textContent = "Time Bonus Gone!";
-            return;
-        } else if (timer > 180) {
+            return; //return or else it will run again
+        } 
+        //first set of values is green for good
+        else if (timer > 180) 
+        {
             display.style.color = "green";
-        } else if (timer < 180 && timer >= 60) {
+        } 
+        //been playing for a while
+        else if (timer < 180 && timer >= 60) 
+        {
             display.style.color = "orange";
-        } else if (timer < 60 && timer >= 30) {
+        } 
+        //closing in
+        else if (timer < 60 && timer >= 30)
+        {
             display.style.color = "red";
-        } else if (timer < 30 && timer % 2 == 1) {
+        } 
+        //oh shoot hurrt up
+        else if (timer < 30 && timer % 2 == 1) 
+        {
             display.style.color = "red";
             display.style.backgroundColor = "black";
-        } else if (timer < 30 && timer % 2 == 0) {
+        } 
+        //flash timer when under 30 seconds
+        else if (timer < 30 && timer % 2 == 0)
+        {
             display.style.color = "red";
             display.style.backgroundColor = "white";
         }
@@ -57,13 +76,14 @@ function startTimer(duration, display)
 
 }
 
+//this will query all scores and only display the first ten
 function loadAllScores() 
 {
     const leaderboardBody = document.getElementById("leaderboardBody");
     leaderboardBody.innerHTML = "";
     let i = 0;
     allScores.forEach(entry => {
-        if (i >= 10) return;
+        if (i >= 10) return; //stop when we reach ten scores
         const row = document.createElement("tr");
         row.innerHTML = `
             <td>${++i}</td>
@@ -74,13 +94,14 @@ function loadAllScores()
     });
 }
 
+//this is the logic for checking the users guess
 function checkGuess() 
 {
-  numGuesses++;
+  ++numGuesses; //always increment the number of guesses taken
   
   guess = userGuess.value;
 
-  if( guess.toLowerCase() == city_name )
+  if( guess.toLowerCase() == city_name ) //if the input matches the context value
   {
     clearInterval(interval);
     
@@ -91,22 +112,25 @@ function checkGuess()
     hintTwo: hintTwo
     };
 
+    //send data to the python backend with ajax
     fetch('/save_score/', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrfToken
         },
         body: JSON.stringify(data)
-    })
+    }) //our python code returns an ajax response
     .then(response => {
         if (!response.ok) {
             throw new Error('Error saving guess');
         }
-        return response.text();
-    })
+        return response.json();
+    }) //if the response is good we have access to some json sent by the response
     .then(data => {
 
-      var choice = confirm("Correct! Would you like to play again??");
+      var score = data.gamescore
+      var choice = confirm(`Correct! Your score was ${score}\nWould you like to play again?`);
         
       if (choice) 
       {
@@ -129,6 +153,7 @@ function checkGuess()
   
 }
 
+//this will simply get the matching key value pair from the stored map of state flowers
 hint2btn.onclick = function() 
 {
     var data = {
@@ -138,7 +163,8 @@ hint2btn.onclick = function()
     fetch('/getbird/', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrfToken
       },
       body: JSON.stringify(data)
     })
@@ -155,7 +181,6 @@ hint2btn.onclick = function()
       let flower = jsonData.flower;
       
       hint2content.value = `The state flower is the ${flower}`;
-      console.log(hint2content.value);
   
       hintsUsed++;
       hintTwo = true;
@@ -166,6 +191,7 @@ hint2btn.onclick = function()
   
 }
   
+//this will simply hit the server and ask it to grab the weather from the NWS API
 hint1btn.onclick = function() 
 {
     var data = {
@@ -176,7 +202,8 @@ hint1btn.onclick = function()
     fetch('/getweather/', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrfToken
       },
       body: JSON.stringify(data)
     })
@@ -196,7 +223,6 @@ hint1btn.onclick = function()
   
       hintsUsed++;
       hintOne = true;
-      console.log(hint1content.value);
       
     })
     .catch(error => {
@@ -205,6 +231,7 @@ hint1btn.onclick = function()
   
 };
 
+//when we load the page we need to run some functions
 window.onload = function () 
 {
     var fiveMinutes = 300,
@@ -213,3 +240,4 @@ window.onload = function ()
     loadAllScores();
     initialize();
 };
+
