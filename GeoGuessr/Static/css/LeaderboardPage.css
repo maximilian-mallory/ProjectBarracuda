@@ -47,7 +47,7 @@ table {
     width: 75%;
     border-collapse: collapse;
     background-color: white;
-    
+    margin-bottom: 1%;
 }
 
 th, td {
