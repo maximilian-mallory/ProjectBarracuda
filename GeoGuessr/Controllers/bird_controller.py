@@ -111,4 +111,4 @@ state_flower_list = {
 
 def SetFlower(city):
 
-    return state_flower_list[city]
+    return state_flower_list[city] #return value

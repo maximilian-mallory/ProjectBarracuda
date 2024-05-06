@@ -7,12 +7,16 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </head>
 <body>
-  <header><p><button class="btn" id="toWelcome">Back to Home Page</button></p></header>
-
+  <div class="return">
+    <div class="button-group">
+      <img src="../static/images/Cloud.png">
+      <button class="btn" id="toWelcome">Back to Home Page</button>
+    </div>
+  </div>
   <div class="signup-box">
     <h2>Signup</h2>
     <form>
-      {% csrf_token %}
+      
       <div class="username-group">
         <label for="username">Username</label>
         <input type="text" id="username" name="username" placeholder="Enter your username" required>
@@ -24,7 +28,7 @@
       </div>
       <br>
       <div class="password-group">
-        <label for="confirmpassword">Password</label>
+        <label for="confirmpassword">Confirm Password</label>
         <input type="password" id="confirmpassword" name="confirmpassword" placeholder="Enter your password" required>
       </div>
       <br>
@@ -38,8 +42,9 @@
     <img class= "logo" src="../static/images/Project-Barracuda_Logo.jpg">
   </div>
 
-  <script src="../static/js/signup.js">
-    
+  <script src="../static/js/signup.js"></script>
+  <script>
+    const csrfToken = "{{ csrf_token }}";
   </script>
 </body>
 </html>

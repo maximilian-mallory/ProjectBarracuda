@@ -3,7 +3,6 @@ import requests
 import json
 from django.views.decorators.csrf import csrf_exempt
 
-@csrf_exempt
 def GetWeather(request):
 
     data = json.loads(request.body)

@@ -8,7 +8,7 @@
 
 </head>
 <body>
-
+{% csrf_token %}
 <div class="container">
     <div id="title" class="main-title">
         <h1>The Legend of Culture: Barracuda Quest the Game 2 Electric Boogaloo Definitive Edition Remastered 2</h1>
@@ -98,8 +98,8 @@
   </div>
     <div id="encouragement" class="bottombox-container">
         <h2>Quotes to keep you going!</h2>
-        <p>"You don't suck!</p>
-        <p>"Your parents divorce wasn't your fault!</p>
+        <p>"You're doing great!</p>
+        <p>"If you guess wrong, become more cultured!</p>
     </div>
     <div id="logo" class="bottombox-container">
       <img class= "logo" src="../static/images/Project-Barracuda_Logo.jpg">
@@ -131,7 +131,8 @@ const longitude = parseFloat("{{long_con}}");
 var interval;
 const scores = [100, 90, 80, 70, 60, 50, 40, 30, 20, 10];
 const allScores = JSON.parse('{{ allScores|escapejs }}');
-    
+console.log(city_name);   
+const csrfToken = "{{ csrf_token }}";
 </script>
 </body>
 
