@@ -1,10 +1,6 @@
-import hashlib
 import json
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.http import  JsonResponse
 from django.shortcuts import redirect, render
-import os, random
-from django.conf import settings
-from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login
 
@@ -26,11 +22,10 @@ def LoginVerify(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-               # print(request.session.get('username', 'user.username'))
                 return redirect('/welcome/')
             
             else:
-                return JsonResponse({'message': 'Incorrect password'})
+                return JsonResponse({'error': 'Incorrect username or password'}, status=400)
 
         except Exception as e:
 
