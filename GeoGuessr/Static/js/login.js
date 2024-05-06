@@ -3,25 +3,25 @@ toWelcome.onclick = function() {
 };
 
 document.addEventListener('DOMContentLoaded', function() {
-const form = document.querySelector('form');
+  const form = document.querySelector('form');
 
-form.addEventListener('submit', function(event) {
-  event.preventDefault();
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
 
-  const username = document.querySelector('#username').value.trim();
-  const password = CryptoJS.SHA1(document.querySelector('#password').value.trim()).toString();
+    const username = document.querySelector('#username').value.trim();
+    const password = CryptoJS.SHA1(document.querySelector('#password').value.trim()).toString();
 
-  const data = {
-    username: username,
-    password: password
-  };
+    const data = {
+      username: username,
+      password: password
+    };
 
-  fetch('/login-verify/', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data)
+    fetch('/login-verify/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data)
     })
     .then(response => {
       if( response.ok )
@@ -31,18 +31,20 @@ form.addEventListener('submit', function(event) {
       } 
       else 
       {
-        return response.json(); // Parse JSON response
+        return response.json();
       }
     })
     .then(data => {
 
       window.alert(data.error);
     })
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        });
+    .catch(error => {
+      console.error('Error:', error);
     });
+
+  });
+
+});
 
 document.getElementById("signupBtn").addEventListener("click", function() {
     window.location.href= 'http://localhost:8000/signup/';

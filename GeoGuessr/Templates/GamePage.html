@@ -19,30 +19,26 @@
   <div class="maincontent">
     <div class="hintscontainer">
         <div id="hints" class="bottombox-container">
-        <h2>Hints</h2>
-        <br>
-        <div class="button-group">
-          <img src="../static/images/Cloud.png">
-          <button id="hint1btn" class="btn">Temperature</button>
+        <div class="gamecontainer">
+          <h2>Hints</h2>
         </div>
-        <br>
-        <p id="hint1content"> </p>
-        <br>
-        <div class="button-group">
-          <img src="../static/images/Cloud.png">
-          <button id="hint2btn" class="btn">State Bird</button>
-        </div>
-        <br>
-        <p id="hint2content"> </p>
-        <br>
         
-        <br><br><br><br>
-        <div class="button-group">
-          <img src="../static/images/Cloud.png">
-          <button class="btn" onclick="window.location.reload()">New Game</button>
+        <div class="hintcontainer">
+          <div class="button-group">
+            <img src="../static/images/Cloud.png">
+            <button id="hint1btn" class="btn">Temperature</button>
+          </div>
+          <input type="text" id="hint1content" class="hinttext"/> 
         </div>
-        <br><br><br><br><br>
-        <div class="container">
+        <div class="hintcontainer">
+          <div class="button-group">
+            <img src="../static/images/Cloud.png">
+            <button id="hint2btn" class="btn">State Flower</button>
+          </div>
+          
+          <input type="text" id="hint2content" class="hinttext"/> 
+          </div>
+        <div class="guesscontainer">
 
           <input
             type="text"
@@ -50,20 +46,30 @@
             placeholder="Enter your guess..."
           />
           <br>
-          <input
-            class="button"
-            type="button" 
-            value="{{city_name}}"
-            onclick="checkGuess();"
-          />
+          <div class="button-group">
+            <img src="../static/images/Cloud.png">
+          <button class="btn"
+            onclick="checkGuess();">
+            Make Guess
+          </button>
+          
+          </div>
         </div>
-        <div class="container">
-          <input
-            class="button"
-            type="button" 
-            value="Surrender?"
-            onclick="window.location.href= 'http://localhost:8000/welcome/';"
-          />
+        
+        <div class="gamecontainer">
+          <div class="button-group">
+            <img src="../static/images/Cloud.png">
+            <button class="btn" onclick="window.location.reload()">New Game</button>
+          </div>
+          <div class="button-group">
+            <img src="../static/images/Cloud.png">
+          <button class="btn"
+            onclick="window.location.href= 'http://localhost:8000/welcome/';">
+            Surrender?
+          </button>
+          
+          </div>
+
         </div>
         </div>
         
@@ -87,7 +93,9 @@
   </div>   
   
   <div class="maincontent" id="inner-container">
-    <div id="timerDiv" class="bottombox-container">Ready?</div>
+    <div class="timer-container">
+    <div id="timerDiv">Ready?</div>
+  </div>
     <div id="encouragement" class="bottombox-container">
         <h2>Quotes to keep you going!</h2>
         <p>"You don't suck!</p>
@@ -99,10 +107,6 @@
   </div>
   
 </div>
-
-
-
-  
         <!-- this is the button for guessing. I can look into getting a better popup window, or we can have a permanent textbox within the game page-->
 <script
       src="https://maps.googleapis.com/maps/api/js?key={{ key }}&loading=async&callback=initialize&v=weekly"

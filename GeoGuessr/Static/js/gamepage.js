@@ -1,12 +1,11 @@
 function initialize ()
 {
-
-  const fenway = { lat: latitude, lng: longitude };
+  const location = { lat: latitude, lng: longitude };
  
   const panorama = new google.maps.StreetViewPanorama(
     document.getElementById("pano"),
     {
-      position: fenway,
+      position: location,
       pov: {
         heading: 34,
         pitch: 10,
@@ -35,7 +34,8 @@ function startTimer(duration, display)
 
         if (--timer < 0) {
             clearInterval(interval);
-            display.textContent = "Time's up!";
+            display.textContent = "Time Bonus Gone!";
+            return;
         } else if (timer > 180) {
             display.style.color = "green";
         } else if (timer < 180 && timer >= 60) {
@@ -54,6 +54,7 @@ function startTimer(duration, display)
     }, 1000);
 
     remainingTime = timer;
+
 }
 
 function loadAllScores() 
@@ -71,7 +72,6 @@ function loadAllScores()
         `;
         leaderboardBody.appendChild(row);
     });
-    console.log(leaderboardBody);
 }
 
 function checkGuess() 
@@ -79,8 +79,6 @@ function checkGuess()
   numGuesses++;
   
   guess = userGuess.value;
-  
-  console.log(guess);
 
   if( guess.toLowerCase() == city_name )
   {
@@ -154,10 +152,10 @@ hint2btn.onclick = function()
       
       var jsonData = JSON.parse(jsonString);
       
-      let bird = jsonData.bird;
-  
-      hint2content.textContent = `The state bird is the ${bird}`;
-      console.log(jsonData.bird);
+      let flower = jsonData.flower;
+      
+      hint2content.value = `The state flower is the ${flower}`;
+      console.log(hint2content.value);
   
       hintsUsed++;
       hintTwo = true;
@@ -167,19 +165,9 @@ hint2btn.onclick = function()
     });
   
 }
-
-window.onload = function () 
-{
-    var fiveMinutes = 300,
-        display = document.querySelector('#timerDiv');
-    interval = startTimer(fiveMinutes, display);
-    loadAllScores();
-    initialize();
-};
   
 hint1btn.onclick = function() 
 {
-  
     var data = {
       latitude: latitude,
       longitude: longitude
@@ -204,15 +192,24 @@ hint1btn.onclick = function()
       
       let temperature = jsonData.temperature;
   
-      hint1content.textContent = `The current temperature is ${temperature}°F`;
+      hint1content.value = `The current temperature is ${temperature}°F`;
   
       hintsUsed++;
       hintOne = true;
-      console.log(jsonData['temperature']);
+      console.log(hint1content.value);
       
     })
     .catch(error => {
       console.error('Error:', error);
     });
   
+};
+
+window.onload = function () 
+{
+    var fiveMinutes = 300,
+        display = document.querySelector('#timerDiv');
+    interval = startTimer(fiveMinutes, display);
+    loadAllScores();
+    initialize();
 };
