@@ -15,7 +15,6 @@ form.addEventListener('submit', function(event) {
     username: username,
     password: password
   };
-  console.log(data);
 
   fetch('/login-verify/', {
     method: 'POST',
@@ -27,14 +26,23 @@ form.addEventListener('submit', function(event) {
     .then(response => {
       if( response.ok )
       {
+        console.log(response);
         window.location.href = '/welcome/';
       } 
+      else 
+      {
+        return response.json(); // Parse JSON response
+      }
     })
-    .catch(error => {
-      console.error('Error:', error);
+    .then(data => {
+
+      window.alert(data.error);
+    })
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
     });
-});
-});
 
 document.getElementById("signupBtn").addEventListener("click", function() {
     window.location.href= 'http://localhost:8000/signup/';

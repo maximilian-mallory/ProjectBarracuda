@@ -71,3 +71,9 @@ body {
     margin-left: auto;
     margin-right: auto;
   }
+
+  #message {
+    height: 20px; /* Set a fixed height for the message div */
+    color: rgb(175, 24, 24); /* Set text color to red */
+    font-weight: bold;
+  }
