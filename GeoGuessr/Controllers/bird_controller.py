@@ -54,6 +54,61 @@ state_bird_list = {
 
 }
 
+state_flower_list = {
+    
+    'montgomery': 'Camellia',
+    'juneau': 'Forget-me-not',
+    'phoenix': 'Saguaro Cactus Blossom',
+    'little rock': 'Apple Blossom',
+    'sacramento': 'California Poppy',
+    'denver': 'Rocky Mountain Columbine',
+    'hartford': 'Mountain Laurel',
+    'dover': 'Peach Blossom',
+    'tallahassee': 'Orange Blossom',
+    'atlanta': 'Cherokee Rose',
+    'honolulu': 'Hibiscus',
+    'boise': 'Syringa',
+    'springfield': 'Purple Violet',
+    'indianapolis': 'Peony',
+    'des moines': 'Wild Prairie Rose',
+    'topeka': 'Sunflower',
+    'frankfort': 'Goldenrod',
+    'baton rouge': 'Magnolia',
+    'augusta': 'White Pine Cone and Tassel',
+    'annapolis': 'Black-eyed Susan',
+    'boston': 'Mayflower',
+    'lansing': 'Apple Blossom',
+    'saint paul': 'Pink and White Lady’s Slipper',
+    'jackson': 'Magnolia',
+    'jefferson city': 'White Hawthorn Blossom',
+    'helena': 'Bitterroot',
+    'lincoln': 'Goldenrod',
+    'carson city': 'Sagebrush',
+    'concord': 'Purple Lilac',
+    'trenton': 'Violet',
+    'santa fe': 'Yucca Flower',
+    'albany': 'Rose',
+    'raleigh': 'Dogwood Blossom',
+    'bismarck': 'Wild Prairie Rose',
+    'columbus': 'Scarlet Carnation',
+    'oklahoma city': 'Mistletoe',
+    'salem': 'Oregon Grape',
+    'harrisburg': 'Mountain Laurel',
+    'providence': 'Violet',
+    'columbia': 'Yellow Jessamine',
+    'pierre': 'Pasque Flower',
+    'nashville': 'Iris',
+    'austin': 'Bluebonnet',
+    'salt lake city': 'Sego Lily',
+    'montpelier': 'Red Clover',
+    'richmond': 'American Dogwood',
+    'olympia': 'Coast Rhododendron',
+    'charleston': 'Rhododendron',
+    'madison': 'Wood Violet',
+    'cheyenne': 'Indian Paintbrush'
+}
+
+
 def SetBird(city):
 
     return state_bird_list[city]
