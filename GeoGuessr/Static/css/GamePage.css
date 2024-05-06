@@ -25,16 +25,85 @@ body {
     align-items: center;
 }
 
-#inner-container {
+.hintcontainer {
   display: flex;
-  margin-top: 1%;
-  width: 100%; /* Change this to 100% */
+  flex-direction: column;
+  max-width: 98%;
+  margin: 1% auto;
   padding: 1.5%;
   background-color: transparent;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   text-align: center;
   align-items: center;
-  height:10%;
+  height: 25%;
+}
+
+.guesscontainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 98%;
+  margin: 1% auto;
+  padding: 1.5%;
+  background-color: transparent;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  align-items: center;
+  height: 25%;
+}
+
+.gamecontainer {
+  display: flex;
+  max-width: 100%;
+  padding: 1.5%;
+  background-color: transparent;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  align-items: center;
+  height: 17.5%;
+
+}
+
+.gamecontainer h2{
+  width: 100%;
+  text-align: center;
+}
+
+
+#userGuessInput{
+  padding: 1%;
+  margin: 5%;
+  width: 85%;
+  justify-content: center;
+  
+}
+
+#hint1content{
+  padding: 1%;
+  margin: 1%;
+  width: 60%;
+  padding-left: auto;
+  border: none;
+}
+
+#hint2content{
+  padding: 1%;
+  margin: 1%;
+  width: 75%;
+  padding-left: auto;
+  
+  border: none;
+}
+
+#inner-container {
+  display: flex;
+  margin-top: 1%;
+  width: 100%; /* Change this to 100% */
+  
+  background-color: transparent;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  align-items: center;
+  height:5%;
 }
 
 .maincontent{
@@ -46,9 +115,10 @@ body {
 #bottom-container {
   display: flex;
   justify-content: space-around;/* Center items horizontally */
-   /* Center items vertically */
+  
   flex-wrap: wrap; /* Allow items to wrap if needed */
-  margin-top: 2%; /* Adjust as needed */
+  margin-top: .5%; /* Adjust as needed */
+  padding-bottom: .5%;
   height: 50%; /* Adjust height as needed */
 }
 
@@ -60,7 +130,7 @@ body {
   margin-top: 1%;
   height: 50%; /* Decrease height by 10% */
   width: 100%;
-  margin-left: 0%;
+  margin-left: 1%;
   margin-right: 0%;
   /* Override margin to zero */
 }
@@ -68,14 +138,18 @@ body {
 /* Adjust the width and height of the timer div using percentages */
 #timerDiv {
   font-size: 36px;
-  width: 30%; /* Adjusted width */
+  width: 20%; /* Adjusted width */
   height: 100%; /* Adjusted height */
   display: flex; /* Use flexbox */
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
   background-color: white;
-  margin-right: 10px;
-  text-align: center; /* Center text horizontally */
+  text-align: center;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  padding-left: 10%;
+  padding-right: 10%;
+   /* Center text horizontally */
 }
 #encouragement {
   background-color: #f9f9f9;
@@ -112,9 +186,30 @@ body {
   max-height: 693.47px;
 }
 
+#hints{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .bottombox-container{
   width: 30%;
   height: 100%;
+}
+
+.timer-container{
+  font-size: 36px;
+  padding: 1%;
+  padding-top: 1%;
+  margin-left: 1%;
+  margin-right: 11%;
+  width: 16%; /* Adjusted width */
+  height: 100%; /* Adjusted height */
+  display: flex; /* Use flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  background-color: white;
+  text-align: center; /* Center text horizontally */
 }
 
 .side-box {
@@ -194,8 +289,9 @@ body {
   }
 
   #logo img{
-    width: 30%;
-    height: auto;
+    padding-left: 36%;
+    width: 45%;
+    height: 90%;
   }
 
   .main-content.bottom-content {

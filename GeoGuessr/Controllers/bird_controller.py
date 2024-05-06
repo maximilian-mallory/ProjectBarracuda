@@ -78,7 +78,7 @@ state_flower_list = {
     'annapolis': 'Black-eyed Susan',
     'boston': 'Mayflower',
     'lansing': 'Apple Blossom',
-    'saint paul': 'Pink and White Lady’s Slipper',
+    'saint paul': 'Pink and White Lady\'s Slipper',
     'jackson': 'Magnolia',
     'jefferson city': 'White Hawthorn Blossom',
     'helena': 'Bitterroot',
@@ -109,6 +109,6 @@ state_flower_list = {
 }
 
 
-def SetBird(city):
+def SetFlower(city):
 
-    return state_bird_list[city]
+    return state_flower_list[city]
