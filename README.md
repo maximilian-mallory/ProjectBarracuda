@@ -7,3 +7,4 @@ See individual commits for task responsibility.
 This repository has been moved from Azure DevOps to GitHub, so there is no active KanBan board.
 Project complete May 6, 2024
 Addition features may be added for practice in the future.
+The team received full points for the software.
